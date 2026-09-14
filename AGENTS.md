@@ -34,6 +34,7 @@ components/
     about/
     projects/
     experience/
+    skills/               # server-rendered section with a client canvas constellation
     contact/
 data/
   projects.json
@@ -51,6 +52,8 @@ hooks/
 types/
   project.ts
   experience.ts
+  skill.ts
+  site-config.ts
   index.ts
 public/
   images/
@@ -121,6 +124,17 @@ export async function getProjectBySlug(
 - Environment variables (even unused today, for the future API) go through a validated `env.ts` (e.g. `zod`-parsed), never raw `process.env.X` scattered through the codebase.
 - Respect `prefers-reduced-motion` for every non-essential animation.
 
+### Celestial scene
+
+- `components/common/celestial-scene/celestial-scene.tsx` is a small Client Component wrapper in `(site)/layout.tsx`. Its children remain Server Components; only the scene and skill interaction need client JavaScript.
+- `hooks/use-scroll-progress.ts` subscribes to one shared, passive, requestAnimationFrame-throttled store in `hooks/scroll-progress-store.ts`. Measure section offsets on resize, then interpolate cached landmarks without layout reads on scroll. Section IDs and progress anchors live in `lib/animations/scroll-timeline.ts`; mark each section with `data-timeline-section`.
+- Scroll updates scoped CSS custom properties directly, never React state. Sky colors, contrast selection, star opacity, and the parameterized sun/moon arc live in pure `lib/animations/` helpers. Colocated `*.test.ts` files run with `bun run test`.
+- Both canvases use `hooks/use-visible-canvas.ts`: one dirty frame per change, no recurring animation loop, IntersectionObserver suspension off-screen, and cancellation while the document is hidden. Canvas drawing is in colocated `*.utils.ts` files; `lib/animations/` stays pure. Background stars stop redrawing before night and once fully visible. Mobile uses 48 stars and caps canvas pixel density at 1.5; desktop uses 130 and caps it at 2.
+- Skills have stable IDs, groups, desktop/mobile percentage positions, and `connectsTo` edges in `data/skills.json`, typed by `types/skill.ts` and read via `getSkills()`. The canvas has 44px keyboard/touch controls and a native list alternative.
+- Reduced motion quantizes progress into day (`0.18`), dusk (`0.54`), and night (`1`) at `0.38`/`0.62`. Fixed layers crossfade for 160ms; bodies stay stationary. Preference changes are handled live. No clouds, shooting stars, or additional celestial bodies are included.
+- The installed Next.js 16.3 error boundary uses `retry()`; route files delegate error/loading markup to `components/common/`.
+- Career entries are explicitly illustrative until replaced. Nullable email and social links in `data/site-config.json` control contact actions; never invent an address or publish a dead contact button.
+
 ## 5. Code style
 
 - No comments that narrate what the code already says (`// loop through projects`). A comment earns its place only by explaining **why**, when the reasoning isn't obvious from the code itself (a workaround, a non-obvious business rule, a deliberate trade-off).
@@ -137,6 +151,12 @@ This portfolio's visual identity is a deliberate choice, not a template. Before 
 - Motion is deliberate: one orchestrated entrance/reveal beats fade-up-on-every-section. Interaction-triggered motion (hover, expand, drag) is welcome; scattered ambient motion is not.
 - Typography does real work — pick a type scale and stick to it; don't reach for a serif+terracotta combo by default.
 - Every new visual pattern gets a short rationale added to this section so the design stays coherent as sections are added over time.
+
+Use Tailwind utilities for static component layout, spacing, and small type treatments. Keep `app/globals.css` for the shared sky and contrast variables, scroll-driven or SVG/canvas states, and responsive geometry that must stay coordinated across the scene. This keeps ordinary structure next to its markup while preserving the single orchestrated visual system.
+
+The continuous sky is the single expressive gesture. Six sky/horizon pairs anchor it: apricot dawn `#8CBAD9`/`#F6CFAD`, clear midday `#78BCE5`/`#D8EAF0`, bronze afternoon `#8D796F`/`#B19577`, velvet dusk `#261637`/`#462A40`, blue hour `#26375F`/`#66628A`, and deep indigo `#111D3D`/`#263557`. Text colors are selected against the full composite background for at least 4.5:1 contrast; no dusk flattening layer is needed at the named stops.
+
+Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc progress. The right-side arc keeps bodies clear of the primary reading column; the sun begins slightly before zero (`-0.05` to `0.62`) so it is already above the horizon on arrival, and the moon runs `0.60` to `1.18` to stay aloft at the close. One unchanging mountain silhouette grounds every section. Bricolage Grotesque supplies the body, UI, and display type; the one hero entrance flourish follows hand-authored, ordered centerline pen routes fitted to Great Vibes at a 100px baseline scale. `lib/animations/signature-strokes.ts` holds the reusable letter routes; `signature-motion.ts` holds pure pacing, tangent, and lift geometry. `signature.tsx` owns the finite requestAnimationFrame loop and minimal nib, samples the active stroke with getPointAtLength, and settles each completed letter into its server-generated Great Vibes fill. The loop pauses while the document is hidden, cancels on unmount, and skips directly to the complete fill for reduced motion. This intentionally replaces the old signature hook; the component owns this entrance loop per the signature specification. New unsupported letters render the whole signature filled without animation until matching routes are authored. Vermilion `#FF6238` is a fixed identity accent for all interactive elements, regardless of sky state. Stars use a low ambient floor in every section, then gain density/opacity and constellation lines toward night. The optional mouse-only night parallax is capped at 8px and disabled for touch or reduced motion. The local-time readout is the only added utility chrome. Open space, thin rules, and native project disclosures keep content quiet; no card tilt, recurring decorative loops, or per-element entrance effects.
 
 ## 7. Keeping this file current
 

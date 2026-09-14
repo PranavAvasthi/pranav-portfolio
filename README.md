@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pranav’s portfolio
 
-## Getting Started
+A statically rendered Next.js 16.3 App Router portfolio that moves from dawn to night as the visitor scrolls. TypeScript is strict; Bun is the only package manager. Read `AGENTS.md` and `.claude/skills/nextjs/SKILL.md` before changing the project.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+bun install
+bun run dev
+bun run lint
+bun run test
+bun run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`. Bricolage Grotesque and Great Vibes use `next/font/google`, so the first build needs access to Google Fonts. In environments that prohibit Turbopack’s internal process/port binding, use `bun run dev --webpack` and `bun run build --webpack`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit the JSON fixtures; components read them through async accessors in `lib/data/`.
 
-## Learn More
+- `data/site-config.json`: name, introduction, email, and social links. Email is currently null and profiles are empty; adding real values enables the contact links.
+- `data/experience.json`: the current entries are explicitly illustrative. Replace them with real career history and set `sample` to false.
+- `data/projects.json`: the implemented portfolio and a labeled future-project placeholder. Each supports an optional destination and an expandable description.
+- `data/skills.json`: initial skill content, constellation groups, desktop/mobile percentage coordinates, and connection IDs. Review the initial skill set before publishing.
 
-To learn more about Next.js, take a look at the following resources:
+The home page composes six Server Components in `app/(site)/page.tsx`. The layout mounts a client scene around server-rendered children. No components import JSON directly.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## One shared sky
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The section-aware scroll store caches section positions on resize and publishes progress at most once per animation frame. CSS custom properties update the sky and text without React renders. Expanding project details or the skill list recalibrates the timeline through ResizeObserver.
 
-## Deploy on Vercel
+| Progress | State            | Upper sky | Horizon sky |
+| -------- | ---------------- | --------- | ----------- |
+| 0        | Apricot dawn     | `#8CBAD9` | `#F6CFAD`   |
+| 0.18     | Clear midday     | `#78BCE5` | `#D8EAF0`   |
+| 0.37     | Bronze afternoon | `#8D796F` | `#B19577`   |
+| 0.54     | Velvet dusk      | `#261637` | `#462A40`   |
+| 0.72     | Blue hour        | `#26375F` | `#66628A`   |
+| 1        | Deep indigo      | `#111D3D` | `#263557`   |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`lib/animations/sky-palette.ts` linearly interpolates RGB channels between stops. Foreground and secondary text are selected against the full composite sky for at least 4.5:1 contrast; the dramatic dusk stops need no flattening layer.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Both bodies use `t = clamp((progress - start) / (end - start))`, `x = 56 + 38t`, `y = 106 - 94sin(πt)`. Coordinates use viewport width and small viewport height. The sun’s range is `-0.05–0.62`, beginning just above the horizon; the moon’s is `0.60–1.18`, remaining aloft at the close. The same fixed mountain silhouette occludes both below the horizon. The right-side arc leaves the main reading column open.
+
+Star alpha uses `t²(3−2t)` with `t = clamp((progress − (0.34 + 0.12s)) / 0.48)` and a deterministic per-star stagger `s` in `[0,1]`. The first 18 desktop / 7 mobile points use a shared ambient floor of `0.1 + 0.9 * smoothstep(0.25, 0.82, progress)`, so the same sparse points are barely present in the Hero and grow into the full field. There are 130 stars on desktop and 48 on mobile. They are drawn on the existing canvas, with no ambient animation loop and no DOM star nodes.
+
+The fixed identity accent is vermilion `#FF6238`, with `#14233A` ink where text sits inside the accent. It is used for CTA fills, link rules, chips, focus rings, constellation glows, and the local-time readout. The accent keeps at least 4.5:1 contrast against its ink and reads as a warm constant thread against both the pale day stops and deep indigo night.
+
+The page uses Bricolage Grotesque for body, UI, and display type. The hero name uses two distinct geometries: hand-authored open centerline routes in `lib/animations/signature-strokes.ts` for the writing, and actual Great Vibes glyph fills parsed on the server in `lib/animations/signature-path.ts` for the finished ink. Hershey Text JS was investigated, but its letterforms do not align with the required Great Vibes resting state. The custom routes reuse letters at the font’s advances; adding a new character requires authoring its routes (otherwise the whole name renders filled immediately). `signature-motion.ts` contains pure timing, tangent, and lift geometry. `components/sections/hero/signature.tsx` owns the finite frame loop: a minimal nib follows getPointAtLength on each open stroke, lifts between strokes, pauses longer between letters, and each completed letter crossfades into its actual fill before the next letter begins. Reduced motion renders the fill immediately, including before hydration. The loop pauses in hidden tabs and stops on completion or unmount. The small client `LocalTimeReadout` uses `Intl.DateTimeFormat().resolvedOptions().timeZone`, updates on the minute, and reports the visitor’s local daypart.
+
+The skill canvas draws on resize or selection only. Each skill has a 44px native button over its canvas point, supporting hover, tap, focus, and Escape. A native disclosure provides all names and descriptions as a regular list.
+
+Reduced motion uses day/dusk/night states at thresholds `0.38` and `0.62`, with 160ms crossfades and stationary bodies. Preference changes work without reloading. Canvas redraws happen only when needed: an initial visible paint, a coarse state change, a resize, or explicit skill interaction. No ongoing loop runs in either motion mode. Off-screen canvases and hidden documents suspend scheduled drawing.
+
+## Verification
+
+Scene checks were performed on September 13, 2026. Signature checks, lint, tests, and build were rechecked on September 14, 2026:
+
+- `bun run lint`: passed without warnings.
+- `bun run test`: 14 tests passed, covering arcs, staggered stars, section interpolation, reduced-motion states, touch-target spacing, contrast at 1,001 progress values across 11 vertical positions and the mountain silhouette, signature fill geometry, open stroke order, pacing, nib tangents, pen lifts, and timezone/DST boundaries.
+- `bun run build --webpack`: passed, including strict type checking; `/` is statically prerendered. Turbopack’s default build hit this environment’s internal port-binding restriction.
+- Headless Chrome at 1440×1000 and a 390×844 touch/mobile viewport: no runtime errors or horizontal overflow; navigation, project disclosure, pointer/touch skill selection, keyboard focus, and Escape passed.
+- Instrumented canvas checks: no idle redraws, no off-screen redraws, and no redraws while scrolling within a reduced-motion state. Day/dusk/night state transitions and stationary body transforms passed.
+- Final five-second scroll sweeps: 300–301 frames, 16.8ms desktop / 16.7ms mobile p95 frame interval, a 33.2ms maximum mobile interval, and no long tasks. These are local Chromium emulation measurements, not a physical-device or cross-browser guarantee.
+- The signature component was hydrated in an isolated local-file Chrome harness with React Strict Mode at desktop and 390px touch/mobile sizes. Deterministic frame checks measured less than 0.001px between nib and stroke endpoint, persistent completed letters, visible lift phases, no frames scheduled after completion or with reduced motion, live reduced-motion cancellation, and a visible no-JavaScript fallback. No test server was started for these signature checks.
