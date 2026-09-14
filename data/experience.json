@@ -1,0 +1,26 @@
+[
+  {
+    "id": "foundations",
+    "period": "The beginning",
+    "title": "Learning by making",
+    "organization": "Foundations",
+    "description": "The first working version. The first useful mistake. A growing interest in understanding how things work beneath the surface.",
+    "sample": true
+  },
+  {
+    "id": "practice",
+    "period": "Along the way",
+    "title": "Connecting the pieces",
+    "organization": "Practice",
+    "description": "Bringing interfaces, data, and interaction together. Learning that the smallest decisions often make the biggest difference.",
+    "sample": true
+  },
+  {
+    "id": "present",
+    "period": "Now",
+    "title": "Building with intention",
+    "organization": "The next chapter",
+    "description": "Making room for more ambitious problems, closer collaboration, and work that is useful to the people on the other side of the screen.",
+    "sample": true
+  }
+]

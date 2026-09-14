@@ -1,0 +1,110 @@
+[
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "group": "Interface",
+    "description": "Clear contracts, expressive types, and fewer surprises between idea and implementation.",
+    "position": { "x": 12, "y": 34 },
+    "mobilePosition": { "x": 16, "y": 15 },
+    "connectsTo": ["react", "html"]
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "group": "Interface",
+    "description": "Composable interfaces with deliberate state and small, reusable components.",
+    "position": { "x": 27, "y": 22 },
+    "mobilePosition": { "x": 46, "y": 9 },
+    "connectsTo": ["nextjs"]
+  },
+  {
+    "id": "nextjs",
+    "name": "Next.js",
+    "group": "Interface",
+    "description": "Server-rendered experiences, thoughtful routing, and fast first impressions.",
+    "position": { "x": 33, "y": 47 },
+    "mobilePosition": { "x": 78, "y": 21 },
+    "connectsTo": ["html"]
+  },
+  {
+    "id": "html",
+    "name": "HTML & CSS",
+    "group": "Interface",
+    "description": "Semantic structure and responsive layouts that hold up across screens.",
+    "position": { "x": 18, "y": 61 },
+    "mobilePosition": { "x": 38, "y": 27 },
+    "connectsTo": []
+  },
+  {
+    "id": "node",
+    "name": "Node.js",
+    "group": "Systems",
+    "description": "JavaScript beyond the browser, with an emphasis on simple and maintainable services.",
+    "position": { "x": 49, "y": 40 },
+    "mobilePosition": { "x": 20, "y": 46 },
+    "connectsTo": ["apis", "git"]
+  },
+  {
+    "id": "apis",
+    "name": "API design",
+    "group": "Systems",
+    "description": "Predictable boundaries that let the interface and the data evolve independently.",
+    "position": { "x": 59, "y": 23 },
+    "mobilePosition": { "x": 53, "y": 40 },
+    "connectsTo": ["sql"]
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "group": "Systems",
+    "description": "Relational thinking, useful queries, and data models shaped around real needs.",
+    "position": { "x": 66, "y": 52 },
+    "mobilePosition": { "x": 79, "y": 52 },
+    "connectsTo": ["git"]
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "group": "Systems",
+    "description": "Small changes, readable history, and a workflow that makes collaboration easier.",
+    "position": { "x": 52, "y": 68 },
+    "mobilePosition": { "x": 44, "y": 60 },
+    "connectsTo": []
+  },
+  {
+    "id": "accessibility",
+    "name": "Accessibility",
+    "group": "Craft",
+    "description": "Keyboard access, readable contrast, and motion that respects the person using it.",
+    "position": { "x": 78, "y": 29 },
+    "mobilePosition": { "x": 18, "y": 78 },
+    "connectsTo": ["performance", "responsive"]
+  },
+  {
+    "id": "performance",
+    "name": "Web performance",
+    "group": "Craft",
+    "description": "Less work per frame, smaller client boundaries, and measurement before assumptions.",
+    "position": { "x": 89, "y": 44 },
+    "mobilePosition": { "x": 48, "y": 73 },
+    "connectsTo": ["testing"]
+  },
+  {
+    "id": "testing",
+    "name": "Testing",
+    "group": "Craft",
+    "description": "Checking the behavior that matters, from pure functions to a real browser.",
+    "position": { "x": 85, "y": 70 },
+    "mobilePosition": { "x": 79, "y": 83 },
+    "connectsTo": ["responsive"]
+  },
+  {
+    "id": "responsive",
+    "name": "Responsive design",
+    "group": "Craft",
+    "description": "Layouts and interactions designed for touch, a keyboard, and the space available.",
+    "position": { "x": 73, "y": 61 },
+    "mobilePosition": { "x": 43, "y": 92 },
+    "connectsTo": []
+  }
+]

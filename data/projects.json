@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "daylight",
+    "title": "A day on the web",
+    "category": "Personal portfolio",
+    "summary": "One continuous sky. Six chapters. A portfolio that finds its own rhythm between first light and nightfall.",
+    "details": "A scroll-driven scene built with a shared celestial arc, an adaptive sky palette, and interactive canvas constellations. Server-rendered content sits over a small client-side scene, with a stationary three-state experience for reduced motion.",
+    "technologies": ["Next.js", "TypeScript", "Canvas"],
+    "url": null,
+    "sample": false
+  },
+  {
+    "slug": "next-chapter",
+    "title": "The next chapter",
+    "category": "A space for future work",
+    "summary": "Good things take shape one considered decision at a time. More work will find a home here.",
+    "details": "This is a placeholder for a future project. Replace it with the problem, the decisions you made, and the result when your next case study is ready.",
+    "technologies": [],
+    "url": null,
+    "sample": true
+  }
+]
