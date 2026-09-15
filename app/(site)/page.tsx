@@ -8,6 +8,7 @@ import { getSiteConfig } from "@/lib/data/get-site-config";
 import { getExperience } from "@/lib/data/get-experience";
 import { getProjects } from "@/lib/data/get-projects";
 import { getSkills } from "@/lib/data/get-skills";
+import { getAbout } from "@/lib/data/get-about";
 
 interface HomeProps {
   searchParams: Promise<{ embed?: string | string[] }>;
@@ -18,8 +19,9 @@ export default async function Home({ searchParams }: HomeProps) {
   const embedded = Array.isArray(embed)
     ? embed.includes("true")
     : embed === "true";
-  const [config, experience, projects, skills] = await Promise.all([
+  const [config, about, experience, projects, skills] = await Promise.all([
     getSiteConfig(),
+    getAbout(),
     getExperience(),
     getProjects(),
     getSkills(),
@@ -27,7 +29,7 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <>
       <HeroSection config={config} showLivePreview={!embedded} />
-      <AboutSection role={config.role} />
+      <AboutSection about={about} />
       <ExperienceSection experience={experience} />
       <ProjectsSection projects={projects} />
       <SkillsSection skills={skills} />

@@ -37,6 +37,7 @@ components/
     skills/               # server-rendered section with a client canvas constellation
     contact/
 data/
+  about.json
   projects.json
   experience.json
   skills.json
@@ -50,6 +51,7 @@ hooks/
   use-scroll-progress.ts
   use-media-query.ts
 types/
+  about.ts
   project.ts
   experience.ts
   skill.ts
@@ -156,7 +158,7 @@ Use Tailwind utilities for static component layout, spacing, and small type trea
 
 The continuous sky is the single expressive gesture. Six sky/horizon pairs anchor it: apricot dawn `#8CBAD9`/`#F6CFAD`, clear midday `#78BCE5`/`#D8EAF0`, bronze afternoon `#8D796F`/`#B19577`, velvet dusk `#261637`/`#462A40`, blue hour `#26375F`/`#66628A`, and deep indigo `#111D3D`/`#263557`. Text colors are selected against the full composite background for at least 4.5:1 contrast; no dusk flattening layer is needed at the named stops.
 
-Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc progress. The right-side arc keeps bodies clear of the primary reading column; the sun begins slightly before zero (`-0.05` to `0.62`) so it is already above the horizon on arrival, and the moon runs `0.60` to `1.18` to stay aloft at the close. One unchanging mountain silhouette grounds every section. Bricolage Grotesque supplies the body, UI, and display type; the one hero entrance flourish follows hand-authored, ordered centerline pen routes fitted to Great Vibes at a 100px baseline scale. `lib/animations/signature-strokes.ts` holds the reusable letter routes; `signature-motion.ts` holds pure pacing, tangent, and lift geometry. `signature.tsx` owns the finite requestAnimationFrame loop and minimal nib, samples the active stroke with getPointAtLength, and settles each completed letter into its server-generated Great Vibes fill. The loop pauses while the document is hidden, cancels on unmount, and skips directly to the complete fill for reduced motion. This intentionally replaces the old signature hook; the component owns this entrance loop per the signature specification. New unsupported letters render the whole signature filled without animation until matching routes are authored. Vermilion `#FF6238` is a fixed identity accent for all interactive elements, regardless of sky state. Stars use a low ambient floor in every section, then gain density/opacity and constellation lines toward night. The optional mouse-only night parallax is capped at 8px and disabled for touch or reduced motion. The local-time readout is the only added utility chrome. Open space, thin rules, and native project disclosures keep content quiet; no card tilt, recurring decorative loops, or per-element entrance effects.
+Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc progress. The right-side arc keeps bodies clear of the primary reading column; the sun begins slightly before zero (`-0.05` to `0.62`) so it is already above the horizon on arrival, and the moon runs `0.60` to `1.18` to stay aloft at the close. One unchanging mountain silhouette grounds every section. Bricolage Grotesque supplies the body, UI, and display type; the one hero entrance flourish follows hand-authored, ordered centerline pen routes fitted to Great Vibes at a 100px baseline scale. `lib/animations/signature-strokes.ts` holds the reusable letter routes; `signature-motion.ts` holds pure pacing, tangent, and lift geometry. `signature.tsx` owns the finite requestAnimationFrame loop and minimal nib, samples the active stroke with getPointAtLength, and settles each completed letter into its server-generated Great Vibes fill. The loop pauses while the document is hidden, cancels on unmount, and skips directly to the complete fill for reduced motion. This intentionally replaces the old signature hook; the component owns this entrance loop per the signature specification. New unsupported letters render the whole signature filled without animation until matching routes are authored. Vermilion `#FF6238` is a fixed identity accent for all interactive elements, regardless of sky state. Stars use a low ambient floor in every section, then gain density/opacity and constellation lines toward night. The optional mouse-only night parallax is capped at 8px and disabled for touch or reduced motion. About copy and education credentials live in `data/about.json` and reach the Server Component through `getAbout()`. Open space, thin rules, and native project disclosures keep content quiet; no card tilt, recurring decorative loops, or per-element entrance effects.
 
 ## 7. Keeping this file current
 

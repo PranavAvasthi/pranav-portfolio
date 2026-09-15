@@ -499,7 +499,7 @@ h2 {
   line-height: 1.85;
   color: var(--muted);
 }
-.body-copy p {
+.body-copy > p {
   margin-bottom: 22px;
 }
 .section-closing {
@@ -759,28 +759,6 @@ summary::marker {
 .route-message h1 {
   font-size: 48px;
 }
-.local-time-readout {
-  position: fixed;
-  right: 20px;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 2;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 8px 11px;
-  border-radius: 3px;
-  background: var(--reading-surface);
-  color: var(--muted);
-  pointer-events: none;
-  font-size: 11px;
-  line-height: 1.2;
-}
-.local-time-readout time {
-  font-variant-numeric: tabular-nums;
-  font-size: 14px;
-  font-weight: 650;
-  color: var(--foreground);
-}
 
 @media (min-width: 1600px) {
   .page-width {
@@ -848,11 +826,6 @@ summary::marker {
   }
   .hero-title {
     font-size: clamp(44px, 12.5vw, 70px);
-  }
-  .local-time-readout {
-    right: 12px;
-    font-size: 10px;
-    padding: 7px 9px;
   }
   .hero-description {
     font-size: 15px;

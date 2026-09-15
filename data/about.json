@@ -1,0 +1,44 @@
+{
+  "eyebrow": "A little context",
+  "headline": ["I think in systems.", "I ship for people."],
+  "subhead": ["One product mindset.", "Web and mobile craft."],
+  "stats": [
+    {
+      "value": "2.5+",
+      "label": "Years of professional experience"
+    },
+    {
+      "value": "6+",
+      "label": "Projects shipped"
+    },
+    {
+      "value": "4+",
+      "label": "Production apps on the App Store & Play Store"
+    }
+  ],
+  "paragraphs": [
+    "I'm a Software Engineer working across Next.js and React Native — building interfaces and the systems behind them. I care about the layer where a technical decision turns into something a person actually feels: a load time, a transition that doesn't jank, a form that doesn't fight you.",
+    "This site is one example. The sky you're scrolling through runs on a single shared timeline, not an animation library — the sun and moon share one interpolation function, the constellations are canvas, not DOM, and every animated detail has a reduced-motion alternative. Those choices keep the experience expressive without making it fragile."
+  ],
+  "education": {
+    "label": "Education",
+    "degree": {
+      "credential": "BE, Computer Science Engineering",
+      "institution": "Chitkara University",
+      "result": "9.80 CGPA"
+    },
+    "schools": [
+      {
+        "level": "12th",
+        "institution": "Government Model Senior Secondary School",
+        "result": "94.2%"
+      },
+      {
+        "level": "10th",
+        "institution": "KBDAV Centenary Public School",
+        "result": "92.4%"
+      }
+    ]
+  },
+  "closing": "Thoughtful by design. Curious by default."
+}
