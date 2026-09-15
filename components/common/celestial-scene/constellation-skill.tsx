@@ -5,7 +5,6 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import { useVisibleCanvas } from "@/hooks/use-visible-canvas";
 import { drawConstellation } from "@/components/common/celestial-scene/constellation-skill.utils";
 import type { Skill } from "@/types/skill";
-import Link from "next/link";
 
 interface ConstellationSkillProps {
   skills: Skill[];
@@ -89,14 +88,6 @@ export function ConstellationSkill({ skills }: ConstellationSkillProps) {
               ? active.description
               : "Explore the connections between the tools and ideas behind the work."}
           </p>
-          {active?.evidence && (
-            <Link
-              className="inline-block py-3 text-sm"
-              href={active.evidence.href}
-            >
-              {active.evidence.label}
-            </Link>
-          )}
         </div>
       </div>
       <details className="skill-list">
@@ -106,16 +97,6 @@ export function ConstellationSkill({ skills }: ConstellationSkillProps) {
             <div key={skill.id}>
               <dt>{skill.name}</dt>
               <dd>{skill.description}</dd>
-              {skill.evidence && (
-                <dd>
-                  <Link
-                    className="inline-block py-3"
-                    href={skill.evidence.href}
-                  >
-                    {skill.evidence.label}
-                  </Link>
-                </dd>
-              )}
             </div>
           ))}
         </dl>

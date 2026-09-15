@@ -70,7 +70,7 @@ export function AboutSection({ about }: AboutSectionProps) {
             <ul className="mt-5 list-none space-y-1.5 p-0 text-[13px] leading-relaxed text-(--muted)">
               {about.education.schools.map((school) => (
                 <li key={school.level}>
-                  {school.level} — {school.institution} · {school.result}
+                  {school.level} - {school.institution} · {school.result}
                 </li>
               ))}
             </ul>

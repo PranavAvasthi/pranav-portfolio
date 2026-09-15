@@ -17,8 +17,8 @@
     }
   ],
   "paragraphs": [
-    "I'm a Software Engineer working across Next.js and React Native — building interfaces and the systems behind them. I care about the layer where a technical decision turns into something a person actually feels: a load time, a transition that doesn't jank, a form that doesn't fight you.",
-    "This site is one example. The sky you're scrolling through runs on a single shared timeline, not an animation library — the sun and moon share one interpolation function, the constellations are canvas, not DOM, and every animated detail has a reduced-motion alternative. Those choices keep the experience expressive without making it fragile."
+    "I'm a Software Engineer working across Next.js and React Native - building interfaces and the systems behind them. I care about the layer where a technical decision turns into something a person actually feels: a load time, a transition that doesn't jank, a form that doesn't fight you.",
+    "This site is one example. The sky you're scrolling through runs on a single shared timeline, not an animation library - the sun and moon share one interpolation function, the constellations are canvas, not DOM, and every animated detail has a reduced-motion alternative. Those choices keep the experience expressive without making it fragile."
   ],
   "education": {
     "label": "Education",

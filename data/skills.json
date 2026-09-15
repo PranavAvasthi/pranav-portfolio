@@ -1,50 +1,38 @@
 [
   {
     "id": "typescript",
-    "evidence": {
-      "label": "See the typed portfolio build",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "TypeScript",
     "group": "Interface",
-    "description": "Clear contracts, expressive types, and fewer surprises between idea and implementation.",
+    "description": "Clear contracts, expressive types, and fewer surprises between idea and implementation - TypeScript and JavaScript day to day.",
     "position": { "x": 12, "y": 34 },
-    "mobilePosition": { "x": 16, "y": 15 },
+    "mobilePosition": { "x": 16, "y": 20 },
     "connectsTo": ["react", "html"]
   },
   {
     "id": "react",
-    "evidence": {
-      "label": "See the component architecture",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "React",
     "group": "Interface",
     "description": "Composable interfaces with deliberate state and small, reusable components.",
     "position": { "x": 27, "y": 22 },
-    "mobilePosition": { "x": 46, "y": 9 },
-    "connectsTo": ["nextjs"]
+    "mobilePosition": { "x": 44, "y": 10 },
+    "connectsTo": ["nextjs", "state-management"]
   },
   {
     "id": "nextjs",
-    "evidence": {
-      "label": "See the server-rendered portfolio",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "Next.js",
     "group": "Interface",
     "description": "Server-rendered experiences, thoughtful routing, and fast first impressions.",
     "position": { "x": 33, "y": 47 },
-    "mobilePosition": { "x": 78, "y": 21 },
+    "mobilePosition": { "x": 80, "y": 32 },
     "connectsTo": ["html"]
   },
   {
     "id": "react-native",
     "name": "React Native",
     "group": "Interface",
-    "description": "Building mobile interfaces with React and TypeScript, with attention to platform behavior and the experience on a real device.",
+    "description": "Building mobile interfaces with React and TypeScript via Expo, with attention to platform behavior and the experience on a real device.",
     "position": { "x": 39, "y": 26 },
-    "mobilePosition": { "x": 78, "y": 8 },
+    "mobilePosition": { "x": 78, "y": 19 },
     "connectsTo": ["react", "nextjs"]
   },
   {
@@ -53,14 +41,32 @@
     "group": "Interface",
     "description": "Semantic structure and responsive layouts that hold up across screens.",
     "position": { "x": 18, "y": 61 },
-    "mobilePosition": { "x": 38, "y": 27 },
+    "mobilePosition": { "x": 35, "y": 36 },
     "connectsTo": []
+  },
+  {
+    "id": "state-management",
+    "name": "State management",
+    "group": "Interface",
+    "description": "Redux Toolkit, Thunk, and Saga for complex client state, Context API for simpler cases, TanStack Query for server state and caching.",
+    "position": { "x": 24, "y": 52 },
+    "mobilePosition": { "x": 56, "y": 21 },
+    "connectsTo": ["react"]
+  },
+  {
+    "id": "styling",
+    "name": "Styling & UI systems",
+    "group": "Interface",
+    "description": "Tailwind CSS and NativeWind for utility-first styling across web and mobile, ShadCN, Material UI, and Bootstrap for component systems, React Native Reanimated for native-feeling motion.",
+    "position": { "x": 14, "y": 48 },
+    "mobilePosition": { "x": 58, "y": 31 },
+    "connectsTo": ["html"]
   },
   {
     "id": "node",
     "name": "Node.js",
     "group": "Systems",
-    "description": "JavaScript beyond the browser, with an emphasis on simple and maintainable services.",
+    "description": "JavaScript beyond the browser - Express.js and FastAPI for building simple, maintainable services.",
     "position": { "x": 49, "y": 40 },
     "mobilePosition": { "x": 20, "y": 46 },
     "connectsTo": ["apis", "git"]
@@ -72,13 +78,13 @@
     "description": "Predictable boundaries that let the interface and the data evolve independently.",
     "position": { "x": 59, "y": 23 },
     "mobilePosition": { "x": 53, "y": 40 },
-    "connectsTo": ["sql"]
+    "connectsTo": ["databases"]
   },
   {
-    "id": "sql",
-    "name": "SQL",
+    "id": "databases",
+    "name": "Databases",
     "group": "Systems",
-    "description": "Relational thinking, useful queries, and data models shaped around real needs.",
+    "description": "Relational thinking with MySQL, flexible document modeling with MongoDB, and Firebase for fast-moving product work.",
     "position": { "x": 66, "y": 52 },
     "mobilePosition": { "x": 79, "y": 52 },
     "connectsTo": ["git"]
@@ -87,17 +93,13 @@
     "id": "git",
     "name": "Git",
     "group": "Systems",
-    "description": "Small changes, readable history, and a workflow that makes collaboration easier.",
+    "description": "Small changes, readable history, and collaboration across GitHub and GitLab.",
     "position": { "x": 52, "y": 68 },
     "mobilePosition": { "x": 44, "y": 60 },
     "connectsTo": []
   },
   {
     "id": "accessibility",
-    "evidence": {
-      "label": "Explore the contrast decisions",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "Accessibility",
     "group": "Craft",
     "description": "Keyboard access, readable contrast, and motion that respects the person using it.",
@@ -107,10 +109,6 @@
   },
   {
     "id": "performance",
-    "evidence": {
-      "label": "See the rendering trade-offs",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "Web performance",
     "group": "Craft",
     "description": "Less work per frame, smaller client boundaries, and measurement before assumptions.",
@@ -120,13 +118,9 @@
   },
   {
     "id": "testing",
-    "evidence": {
-      "label": "See what this portfolio checks",
-      "href": "/projects/a-day-on-the-web"
-    },
     "name": "Testing",
     "group": "Craft",
-    "description": "Checking the behavior that matters, from pure functions to a real browser.",
+    "description": "Checking the behavior that matters with Jest - from pure functions to a real browser.",
     "position": { "x": 85, "y": 70 },
     "mobilePosition": { "x": 79, "y": 83 },
     "connectsTo": ["responsive"]
@@ -137,7 +131,25 @@
     "group": "Craft",
     "description": "Layouts and interactions designed for touch, a keyboard, and the space available.",
     "position": { "x": 73, "y": 61 },
-    "mobilePosition": { "x": 43, "y": 92 },
+    "mobilePosition": { "x": 46, "y": 92 },
     "connectsTo": []
+  },
+  {
+    "id": "tools-workflow",
+    "name": "Tools & workflow",
+    "group": "Craft",
+    "description": "EAS Build for mobile release pipelines, Postman for API work, Jira for tracking and coordinating with a team.",
+    "position": { "x": 80, "y": 55 },
+    "mobilePosition": { "x": 30, "y": 88 },
+    "connectsTo": ["git"]
+  },
+  {
+    "id": "agentic-development",
+    "name": "Agentic development",
+    "group": "Craft",
+    "description": "Directing AI coding agents like Claude Code, Codex, and Cursor with structured specs, catching what they get wrong, and treating them as a fast collaborator rather than a shortcut around engineering judgment.",
+    "position": { "x": 83, "y": 36 },
+    "mobilePosition": { "x": 66, "y": 74 },
+    "connectsTo": ["tools-workflow"]
   }
 ]

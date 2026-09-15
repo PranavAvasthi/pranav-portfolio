@@ -20,8 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const config = await getSiteConfig();
   return {
     title: {
-      default: `${config.name} — ${config.role}`,
-      template: `%s — ${config.name}`,
+      default: `${config.name} - ${config.role}`,
+      template: `%s - ${config.name}`,
     },
     description: `${config.name} is a ${config.role}. ${config.introduction}`,
   };

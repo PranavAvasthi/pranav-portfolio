@@ -2,17 +2,17 @@
 
 # This is NOT the Next.js you know
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+This version has breaking changes - APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+This block is written and re-added by `next dev` - verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
 
 # Portfolio Project Rules
 
-This file is the source of truth for how this codebase is organized and why. It is a living document — any agent (human or AI) that changes the structure, adds a pattern, or makes an architectural decision updates this file in the same commit. Stale docs are worse than no docs.
+This file is the source of truth for how this codebase is organized and why. It is a living document - any agent (human or AI) that changes the structure, adds a pattern, or makes an architectural decision updates this file in the same commit. Stale docs are worse than no docs.
 
-`CLAUDE.md` mirrors this file exactly. If your OS/deploy setup handles symlinks cleanly, make it one (`ln -s AGENTS.md CLAUDE.md`); otherwise keep it a plain copy, but never edit the two separately — treat `AGENTS.md` as the source and re-copy after every edit.
+`CLAUDE.md` mirrors this file exactly. If your OS/deploy setup handles symlinks cleanly, make it one (`ln -s AGENTS.md CLAUDE.md`); otherwise keep it a plain copy, but never edit the two separately - treat `AGENTS.md` as the source and re-copy after every edit.
 
 ## 1. Project structure
 
@@ -44,7 +44,7 @@ data/
   skills.json
   site-config.json
 lib/
-  data/                   # accessor layer — see §2
+  data/                   # accessor layer - see §2
   utils/                  # pure helper functions
   animations/             # shared motion variants/configs
   validations/            # zod schemas (contact form, etc.)
@@ -63,12 +63,12 @@ public/
   fonts/                  # only if self-hosting non-next/font files
 ```
 
-This project doesn't use a `src/` directory — everything sits at the repo root, sibling to `app/`. Keep it that way; don't introduce `src/` later without updating this file and the `@/*` path alias in `tsconfig.json`.
+This project doesn't use a `src/` directory - everything sits at the repo root, sibling to `app/`. Keep it that way; don't introduce `src/` later without updating this file and the `@/*` path alias in `tsconfig.json`.
 
 Rules:
 
-- `app/` holds routing concerns only — pages compose sections, they don't contain markup logic themselves. `globals.css` stays in `app/` (Next's default) — don't create a separate `styles/` folder for it.
-- Every folder that can grow gets an `index.ts` barrel **only** where it meaningfully reduces import noise (e.g. `components/ui/index.ts`). Don't barrel `sections/` — direct imports keep it obvious where a component lives.
+- `app/` holds routing concerns only - pages compose sections, they don't contain markup logic themselves. `globals.css` stays in `app/` (Next's default) - don't create a separate `styles/` folder for it.
+- Every folder that can grow gets an `index.ts` barrel **only** where it meaningfully reduces import noise (e.g. `components/ui/index.ts`). Don't barrel `sections/` - direct imports keep it obvious where a component lives.
 - No file mixes unrelated concerns: a section file renders; a hook manages state/side-effects; a lib function is pure and testable in isolation.
 
 ## 2. Data layer (JSON now, API later without a rewrite)
@@ -99,31 +99,31 @@ export async function getProjectBySlug(
 ```
 
 - Functions are `async` from day one, even though JSON reads are sync. This means swapping the body for a `fetch()` call to a real API later touches **zero** call sites.
-- Every JSON file has a matching type in `types/`, and the type is what components/sections import — not `typeof import(...)`.
-- Server Components call these functions directly. No client-side fetching for static content — this is a portfolio, not a dashboard; render at build time.
+- Every JSON file has a matching type in `types/`, and the type is what components/sections import - not `typeof import(...)`.
+- Server Components call these functions directly. No client-side fetching for static content - this is a portfolio, not a dashboard; render at build time.
 - If a JSON file grows unwieldy or needs relations (e.g. project ↔ tech stack ↔ case study), split it rather than nesting deeply, and join in the accessor function.
 
 ## 3. Component conventions
 
 - **One component, one export, one file.** No default-exporting a component and named-exporting three helpers from the same file. Helpers that aren't components go in `lib/utils/` or a colocated `*.utils.ts`.
-- **`components/ui/`** — primitives only (Button, Input, Textarea, Badge, Card, Tooltip, Dialog...). These know nothing about the portfolio's content; they'd survive being copy-pasted into an unrelated project. Build variants with `class-variance-authority` (`cva`) rather than boolean prop soup.
-- **`components/icons/`** — reach for `lucide-react` first, always. Only add a file here for a custom mark (logo, a brand icon lucide doesn't have) — one icon per file, sized via props, not hardcoded.
-- **`components/common/`** — composite, content-aware pieces reused across sections (site header, footer, section heading pattern, animated cursor, theme toggle).
-- **`components/sections/<name>/`** — one folder per homepage section. A section folder can contain its own small subcomponents (e.g. `sections/projects/project-card.tsx`) if they're not reused elsewhere; promote to `ui/` or `common/` the moment a second section wants it.
+- **`components/ui/`** - primitives only (Button, Input, Textarea, Badge, Card, Tooltip, Dialog...). These know nothing about the portfolio's content; they'd survive being copy-pasted into an unrelated project. Build variants with `class-variance-authority` (`cva`) rather than boolean prop soup.
+- **`components/icons/`** - reach for `lucide-react` first, always. Only add a file here for a custom mark (logo, a brand icon lucide doesn't have) - one icon per file, sized via props, not hardcoded.
+- **`components/common/`** - composite, content-aware pieces reused across sections (site header, footer, section heading pattern, animated cursor, theme toggle).
+- **`components/sections/<name>/`** - one folder per homepage section. A section folder can contain its own small subcomponents (e.g. `sections/projects/project-card.tsx`) if they're not reused elsewhere; promote to `ui/` or `common/` the moment a second section wants it.
 - Colocate a component's types in the same file if they're only used there; otherwise put them in `types/`.
 - Props interfaces are named `<ComponentName>Props` and declared directly above the component, not in a separate file, unless shared.
 
 ## 4. Next.js / React conventions
 
-- **Package manager: bun.** Use `bun install` / `bun add` / `bun run <script>` — don't mix in `npm`/`yarn`/`pnpm` lockfiles.
-- **Server Components by default.** Add `"use client"` only where interactivity/state/browser APIs genuinely require it (form inputs, animation triggers driven by scroll/hover, theme toggle). Keep client boundaries as small and as low in the tree as possible — don't mark an entire section client just because one button inside it needs `onClick`.
-- Use the **Metadata API** (`generateMetadata` / static `metadata` export) per route — no manual `<head>` tags.
+- **Package manager: bun.** Use `bun install` / `bun add` / `bun run <script>` - don't mix in `npm`/`yarn`/`pnpm` lockfiles.
+- **Server Components by default.** Add `"use client"` only where interactivity/state/browser APIs genuinely require it (form inputs, animation triggers driven by scroll/hover, theme toggle). Keep client boundaries as small and as low in the tree as possible - don't mark an entire section client just because one button inside it needs `onClick`.
+- Use the **Metadata API** (`generateMetadata` / static `metadata` export) per route - no manual `<head>` tags.
 - Images: always `next/image`, always with explicit `width`/`height` or `fill` + a sized parent, always meaningful `alt` text.
-- Fonts: `next/font/google` or `next/font/local`, loaded once in the root layout, exposed as CSS variables — never a `<link>` to Google Fonts.
+- Fonts: `next/font/google` or `next/font/local`, loaded once in the root layout, exposed as CSS variables - never a `<link>` to Google Fonts.
 - Use route groups (`(site)`) to keep the root layout clean if auth/dashboard routes are ever added later.
 - Add `loading.tsx` and `error.tsx` boundaries at the route level even for a single-page portfolio if any section does async work.
-- Absolute imports via the `@/*` path alias — no `../../../` chains.
-- TypeScript `strict: true`. No `any` — if a shape is genuinely unknown, type it as `unknown` and narrow.
+- Absolute imports via the `@/*` path alias - no `../../../` chains.
+- TypeScript `strict: true`. No `any` - if a shape is genuinely unknown, type it as `unknown` and narrow.
 - Environment variables (even unused today, for the future API) go through a validated `env.ts` (e.g. `zod`-parsed), never raw `process.env.X` scattered through the codebase.
 - Respect `prefers-reduced-motion` for every non-essential animation.
 
@@ -150,24 +150,24 @@ export async function getProjectBySlug(
 This portfolio's visual identity is a deliberate choice, not a template. Before adding any new UI:
 
 - Avoid the common AI-generated defaults: warm-cream-and-terracotta or near-black-with-one-neon-accent palettes, all-caps tracked-out eyebrow labels, `01 / 02 / 03` numbering unless content is truly sequential, identical rounded cards with the same soft shadow everywhere, an arrow appended to every link.
-- Pick one moment to be bold (the hero, a signature interaction, a distinctive type treatment) and keep everything else disciplined around it — restraint elsewhere makes the bold choice land.
+- Pick one moment to be bold (the hero, a signature interaction, a distinctive type treatment) and keep everything else disciplined around it - restraint elsewhere makes the bold choice land.
 - Motion is deliberate: one orchestrated entrance/reveal beats fade-up-on-every-section. Interaction-triggered motion (hover, expand, drag) is welcome; scattered ambient motion is not.
-- Typography does real work — pick a type scale and stick to it; don't reach for a serif+terracotta combo by default.
+- Typography does real work - pick a type scale and stick to it; don't reach for a serif+terracotta combo by default.
 - Every new visual pattern gets a short rationale added to this section so the design stays coherent as sections are added over time.
 
 Use Tailwind utilities for static component layout, spacing, and small type treatments. Keep `app/globals.css` for the shared sky and contrast variables, scroll-driven or SVG/canvas states, and responsive geometry that must stay coordinated across the scene. This keeps ordinary structure next to its markup while preserving the single orchestrated visual system.
 
 The continuous sky is the single expressive gesture. Six sky/horizon pairs anchor it: apricot dawn `#8CBAD9`/`#F6CFAD`, clear midday `#78BCE5`/`#D8EAF0`, bronze afternoon `#8D796F`/`#B19577`, velvet dusk `#261637`/`#462A40`, blue hour `#26375F`/`#66628A`, and deep indigo `#111D3D`/`#263557`. Text colors are selected against the full composite background for at least 4.5:1 contrast; no dusk flattening layer is needed at the named stops.
 
-Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc progress. The right-side arc keeps bodies clear of the primary reading column; the sun begins slightly before zero (`-0.05` to `0.62`) so it is already above the horizon on arrival, and the moon runs `0.60` to `1.18` to stay aloft at the close. One unchanging mountain silhouette grounds every section. Bricolage Grotesque supplies the body, UI, and display type; the one hero entrance flourish follows hand-authored, ordered centerline pen routes fitted to Great Vibes at a 100px baseline scale. `lib/animations/signature-strokes.ts` holds the reusable letter routes; `signature-motion.ts` holds pure pacing, tangent, and lift geometry. `signature.tsx` owns the finite requestAnimationFrame loop and minimal nib, samples the active stroke with getPointAtLength, and settles each completed letter into its server-generated Great Vibes fill. The loop pauses while the document is hidden, cancels on unmount, and skips directly to the complete fill for reduced motion. This intentionally replaces the old signature hook; the component owns this entrance loop per the signature specification. New unsupported letters render the whole signature filled without animation until matching routes are authored. Vermilion `#FF6238` is a fixed identity accent for all interactive elements, regardless of sky state. Stars use a low ambient floor in every section, then gain density/opacity and constellation lines toward night. The optional mouse-only night parallax is capped at 8px and disabled for touch or reduced motion. About copy and education credentials live in `data/about.json` and reach the Server Component through `getAbout()`. Open space, thin rules, and dedicated case-study links keep content quiet; no card tilt, recurring decorative loops, or per-element entrance effects.
+Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc progress. The right-side arc keeps bodies clear of the primary reading column; the sun begins slightly before zero (`-0.05` to `0.62`) so it is already above the horizon on arrival, and the moon runs `0.60` to `1.18` to stay aloft at the close. One unchanging mountain silhouette grounds every section. Bricolage Grotesque supplies the body, UI, and display type; the one hero entrance flourish follows hand-authored, ordered centerline pen routes fitted to Great Vibes at a 100px baseline scale. `lib/animations/signature-strokes.ts` holds the reusable letter routes; `signature-motion.ts` holds pure pacing, tangent, and lift geometry. `signature.tsx` owns the finite requestAnimationFrame loop and minimal nib, samples the active stroke with getPointAtLength, and settles each completed letter into its server-generated Great Vibes fill. The loop pauses while the document is hidden, cancels on unmount, and skips directly to the complete fill for reduced motion. This intentionally replaces the old signature hook; the component owns this entrance loop per the signature specification. New unsupported letters render the whole signature filled without animation until matching routes are authored. Vermilion `#FF6238` is a fixed identity accent for all interactive elements, regardless of sky state. Stars use a low ambient floor in every section, then gain density/opacity and constellation lines toward night. Skill connections are deduplicated; cross-group links are faint and dashed, while idle stars vary subtly in size so the three clusters remain legible. The optional mouse-only night parallax is capped at 8px and disabled for touch or reduced motion. About copy and education credentials live in `data/about.json` and reach the Server Component through `getAbout()`. Open space, thin rules, and dedicated case-study links keep content quiet; no card tilt, recurring decorative loops, or per-element entrance effects.
 
 ## 7. Keeping this file current
 
-Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Experience uses one company record with nested role tenures so promotions read as progression within the same employer. Role dates are stored as calendar months; `formatExperiencePeriod()` derives inclusive tenure, while the current role refreshes against the visitor's date after hydration. Project case studies live in the typed project fixture and render on statically generated `/projects/[slug]` routes; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project routes. The shorter hero headline keeps role, introduction, and work actions prominent.
+Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Experience uses one company record with nested role tenures so promotions read as progression within the same employer. Role dates are stored as calendar months; `formatExperiencePeriod()` derives inclusive tenure, while the current role refreshes against the visitor's date after hydration. Project case studies live in the typed project fixture and render on statically generated `/projects/[slug]` routes; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Skills consolidate related tools into curated constellation points; project tech stacks show their supporting technologies. The shorter hero headline keeps role, introduction, and work actions prominent.
 
 `components/common/phone-frame.tsx` owns the device bezel for the hero's live preview. Project logos and screenshots render as standalone imagery without a device frame. The hero preview uses a non-interactive iframe of `/?embed=true`, and the home page suppresses it when that guard is present, preventing recursive phone frames. The hero phone is mounted after hydration only at viewport widths of at least 900px, and its small idle movement stops under reduced motion. This deliberate product proof balances the page without expanding the celestial scene.
 
-The header exposes every story section. Its home link stays as a compact `PA` monogram on touch and narrow screens; precise mouse hover or keyboard focus on larger screens expands the name in two stable pieces—`ranav` after `P`, then `vasthi` after `A`—and draws one vermilion curve beneath it. Section links share a left-to-right vermilion underline on hover and focus. This avoids repeating the full signature while keeping the owner identity available in the navigation.
+The header exposes every story section. Its home link stays as a compact `PA` monogram on touch and narrow screens; precise mouse hover or keyboard focus on larger screens expands the name in two stable pieces-`ranav` after `P`, then `vasthi` after `A`-and draws one vermilion curve beneath it. Section links share a left-to-right vermilion underline on hover and focus. This avoids repeating the full signature while keeping the owner identity available in the navigation.
 
 Primary actions keep the fixed vermilion identity color. Hover sweeps a lighter vermilion fill from left to right and lifts the control slightly with a soft foreground-derived shadow; reduced motion keeps the fill response and removes the movement.
 
@@ -177,4 +177,4 @@ Update this file whenever you:
 - Introduce a new shared pattern (a new primitive category, a new data-fetching convention, a new animation utility).
 - Make and settle a non-obvious architectural decision (e.g. "why does `lib/data` return promises for sync JSON reads").
 
-Keep entries terse and current — delete guidance that no longer reflects the codebase rather than letting it accumulate.
+Keep entries terse and current - delete guidance that no longer reflects the codebase rather than letting it accumulate.

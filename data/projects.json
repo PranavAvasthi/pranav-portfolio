@@ -5,7 +5,7 @@
     "tagline": "Skill-Based Video Competition Platform",
     "description": "A skill-based video competition platform where creators showcase their talent through weekly challenges, compete through public voting, and earn brand-sponsored rewards. Built to support diverse creator communities while enabling brands to launch sponsored competitions and engage audiences across India.",
     "platform": ["mobile"],
-    "roleNote": "My role on this one's worth a conversation — reach out.",
+    "roleNote": "My role on this one's worth a conversation - reach out.",
     "technologies": ["React Native", "Expo", "TypeScript", "EAS"],
     "metrics": [
       {
@@ -87,7 +87,7 @@
     "slug": "solar-sense",
     "title": "Solar Sense",
     "tagline": "Smart Energy Management Platform",
-    "description": "A smart energy management platform for monitoring and optimizing residential energy consumption. Users can track real-time electricity flows, maximize self-consumption of solar energy, control EV charging based on excess PV generation, and optimize battery charging around dynamic electricity tariffs—all through a unified mobile experience.",
+    "description": "A smart energy management platform for monitoring and optimizing residential energy consumption. Users can track real-time electricity flows, maximize self-consumption of solar energy, control EV charging based on excess PV generation, and optimize battery charging around dynamic electricity tariffs-all through a unified mobile experience.",
     "platform": ["mobile"],
     "technologies": ["React Native", "Expo", "TypeScript", "EAS"]
   },
@@ -103,7 +103,7 @@
     "slug": "industry-connect",
     "title": "Industry Connect",
     "tagline": "Smart B2B Industrial Commerce & Networking Platform",
-    "description": "A unified B2B industrial ecosystem connecting manufacturers, buyers, suppliers, MSMEs, and industry organizations. Businesses can discover verified suppliers and products, post requirements and RFQs, generate qualified enquiries, build professional networks, and participate in industrial events—all through a single digital platform designed to simplify sourcing, collaboration, and business growth.",
+    "description": "A unified B2B industrial ecosystem connecting manufacturers, buyers, suppliers, MSMEs, and industry organizations. Businesses can discover verified suppliers and products, post requirements and RFQs, generate qualified enquiries, build professional networks, and participate in industrial events-all through a single digital platform designed to simplify sourcing, collaboration, and business growth.",
     "platform": ["mobile", "web"],
     "metrics": [{ "label": "Agentic Coding" }],
     "technologies": ["React Native", "Expo", "EAS", "Next.js", "TypeScript"]
