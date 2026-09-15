@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { SocialLinks } from "@/components/common/social-links";
 import type { SiteConfig } from "@/types/site-config";
+import { SectionLink } from "@/components/common/section-link";
 
 interface SiteFooterProps {
   config: SiteConfig;
@@ -13,13 +12,12 @@ export function SiteFooter({ config }: SiteFooterProps) {
         <p className="m-0">Made with care by {config.name}.</p>
         <p className="mt-1 mb-0 text-[10px]">{config.role}</p>
       </div>
-      <SocialLinks socials={config.socials} />
-      <Link
+      <SectionLink
         className="whitespace-nowrap underline decoration-(--accent) underline-offset-1"
         href="/#home"
       >
         Back to daylight
-      </Link>
+      </SectionLink>
     </footer>
   );
 }

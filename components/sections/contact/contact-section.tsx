@@ -37,7 +37,7 @@ export function ContactSection({ config }: ContactSectionProps) {
         <SocialLinks socials={config.socials} />
       </div>
       <p className="goodnight">
-        Thanks for spending a little of your day here.
+        It&apos;s late where the sky is. Good time to start something.
       </p>
     </section>
   );

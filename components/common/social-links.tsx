@@ -2,24 +2,32 @@ import type { SiteConfig } from "@/types/site-config";
 
 interface SocialLinksProps {
   socials: SiteConfig["socials"];
+  email?: SiteConfig["email"];
 }
 
-export function SocialLinks({ socials }: SocialLinksProps) {
-  if (!socials.length) return null;
+export function SocialLinks({ socials, email }: SocialLinksProps) {
+  const links = [
+    ...(email
+      ? [{ label: "Email", url: `mailto:${email}`, external: false }]
+      : []),
+    ...socials.map((social) => ({ ...social, external: true })),
+  ];
+
+  if (!links.length) return null;
   return (
     <nav
-      aria-label="Social profiles"
+      aria-label={email ? "Contact and social profiles" : "Social profiles"}
       className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
     >
-      {socials.map((social) => (
+      {links.map((link) => (
         <a
-          key={social.label}
-          href={social.url}
-          target="_blank"
-          rel="noreferrer"
+          key={link.label}
+          href={link.url}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noreferrer" : undefined}
           className="inline-block py-3"
         >
-          {social.label}
+          {link.label}
         </a>
       ))}
     </nav>

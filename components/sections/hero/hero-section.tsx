@@ -3,6 +3,7 @@ import type { SiteConfig } from "@/types/site-config";
 import { getSignature } from "@/lib/data/get-signature";
 import { Signature } from "@/components/sections/hero/signature";
 import { SocialLinks } from "@/components/common/social-links";
+import { SectionLink } from "@/components/common/section-link";
 import { LivePreviewPhone } from "@/components/sections/hero/live-preview-phone";
 
 interface HeroSectionProps {
@@ -41,15 +42,15 @@ export async function HeroSection({
         </h1>
         <p className="hero-description">{config.introduction}</p>
         <div className="flex flex-wrap items-center gap-6.5 text-sm leading-5.25 max-[699px]:gap-5 max-[699px]:text-xs max-[699px]:leading-4.5">
-          <Link className="primary-link" href="#projects">
+          <SectionLink className="primary-link" href="#projects">
             Explore my work
-          </Link>
+          </SectionLink>
           <Link className="text-link" href="/projects/a-day-on-the-web">
             How I built this
           </Link>
         </div>
         <div className="mt-4">
-          <SocialLinks socials={config.socials} />
+          <SocialLinks socials={config.socials} email={config.email} />
         </div>
       </div>
       {showLivePreview && <LivePreviewPhone />}
