@@ -1,4 +1,5 @@
 import { SectionLink } from "@/components/common/section-link";
+import { MobileNavMenu } from "@/components/common/mobile-nav-menu";
 import Image from "next/image";
 
 interface SiteHeaderProps {
@@ -7,7 +8,7 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ name }: SiteHeaderProps) {
   return (
-    <header className="site-header page-width flex h-26 items-center justify-between max-[699px]:h-20.5">
+    <header className="site-header page-width relative flex h-26 items-center justify-between max-[699px]:h-20.5">
       <div className="flex items-center gap-2.5 max-[699px]:gap-1.5">
         <Image
           className="size-9 shrink-0 rounded-[9px] max-[699px]:size-7 max-[699px]:rounded-[7px]"
@@ -39,7 +40,7 @@ export function SiteHeader({ name }: SiteHeaderProps) {
         </SectionLink>
       </div>
       <nav
-        className="flex items-center gap-7 text-sm leading-5.25 font-medium max-[1000px]:gap-5 max-[699px]:gap-2.5 max-[699px]:text-[10px] max-[699px]:leading-4"
+        className="flex items-center gap-7 text-sm leading-5.25 font-medium max-[1000px]:gap-5 max-[699px]:hidden"
         aria-label="Main navigation"
       >
         <SectionLink className="site-nav-link" href="/#about">
@@ -58,6 +59,7 @@ export function SiteHeader({ name }: SiteHeaderProps) {
           Contact
         </SectionLink>
       </nav>
+      <MobileNavMenu />
     </header>
   );
 }

@@ -15,15 +15,6 @@ export function useCelestialLoader() {
   useEffect(() => {
     const overlay = overlayRef.current;
     if (!overlay) return;
-    if (new URLSearchParams(location.search).get("embed") === "true") {
-      overlay.hidden = true;
-      delete overlay.dataset.celestialLoading;
-      queueMicrotask(() => {
-        setVisible(false);
-        document.dispatchEvent(new Event(LOADER_COMPLETE_EVENT));
-      });
-      return;
-    }
 
     const content = overlay.parentElement?.querySelector<HTMLElement>(
       ":scope > .site-content",

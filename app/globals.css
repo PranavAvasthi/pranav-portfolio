@@ -256,6 +256,54 @@ summary:focus-visible {
 .site-nav-link:focus-visible::after {
   transform: scaleX(1);
 }
+.mobile-nav-menu {
+  display: none;
+}
+.mobile-nav-toggle {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--foreground) 32%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--reading-surface) 32%, transparent);
+}
+.mobile-nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  margin: 4px 0;
+  background: currentColor;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+.mobile-nav-panel {
+  position: absolute;
+  top: calc(100% - 6px);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  min-width: 176px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+  background: color-mix(in srgb, var(--reading-surface) 86%, transparent);
+  box-shadow: 0 16px 34px rgb(10 26 43 / 0.14);
+  backdrop-filter: blur(14px);
+}
+.mobile-nav-link {
+  padding: 12px 10px;
+  text-decoration: none;
+}
+@media (max-width: 699px) {
+  .mobile-nav-menu {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-toggle span {
+    transition: none;
+  }
+}
 
 .hero-section {
   position: relative;

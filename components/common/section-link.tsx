@@ -8,6 +8,7 @@ interface SectionLinkProps {
   className?: string;
   children: ReactNode;
   ariaLabel?: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function SectionLink({
@@ -15,8 +16,10 @@ export function SectionLink({
   className,
   children,
   ariaLabel,
+  onClick,
 }: SectionLinkProps) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(event);
     if (
       event.button !== 0 ||
       event.metaKey ||
