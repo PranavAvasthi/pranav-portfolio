@@ -9,7 +9,15 @@ import { getExperience } from "@/lib/data/get-experience";
 import { getProjects } from "@/lib/data/get-projects";
 import { getSkills } from "@/lib/data/get-skills";
 
-export default async function Home() {
+interface HomeProps {
+  searchParams: Promise<{ embed?: string | string[] }>;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const embed = (await searchParams).embed;
+  const embedded = Array.isArray(embed)
+    ? embed.includes("true")
+    : embed === "true";
   const [config, experience, projects, skills] = await Promise.all([
     getSiteConfig(),
     getExperience(),
@@ -18,8 +26,8 @@ export default async function Home() {
   ]);
   return (
     <>
-      <HeroSection config={config} />
-      <AboutSection />
+      <HeroSection config={config} showLivePreview={!embedded} />
+      <AboutSection role={config.role} />
       <ExperienceSection experience={experience} />
       <ProjectsSection projects={projects} />
       <SkillsSection skills={skills} />

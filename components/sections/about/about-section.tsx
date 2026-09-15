@@ -1,4 +1,8 @@
-export function AboutSection() {
+interface AboutSectionProps {
+  role: string;
+}
+
+export function AboutSection({ role }: AboutSectionProps) {
   return (
     <section
       id="about"
@@ -24,9 +28,8 @@ export function AboutSection() {
         </p>
         <div className="body-copy">
           <p>
-            I’m a SWE 3 developer working with Next.js and React Native. My
-            focus is the connection between a useful interface and the
-            engineering decisions that support it.
+            I’m a {role}. My focus is the connection between a useful interface
+            and the engineering decisions that support it.
           </p>
           <p>
             This site is one example: the content renders on the server, the sky

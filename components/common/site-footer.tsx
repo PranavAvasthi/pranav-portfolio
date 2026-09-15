@@ -1,14 +1,19 @@
 import Link from "next/link";
+import { SocialLinks } from "@/components/common/social-links";
+import type { SiteConfig } from "@/types/site-config";
 
 interface SiteFooterProps {
-  name: string;
+  config: SiteConfig;
 }
 
-export function SiteFooter({ name }: SiteFooterProps) {
+export function SiteFooter({ config }: SiteFooterProps) {
   return (
-    <footer className="site-footer page-width flex justify-between gap-6 max-[699px]:items-start">
-      <p className="m-0 max-[699px]:max-w-42.5">Made with care by {name}.</p>
-      <span className="footer-note">Same sky. New possibilities.</span>
+    <footer className="site-footer page-width flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
+      <div>
+        <p className="m-0">Made with care by {config.name}.</p>
+        <p className="mt-1 mb-0 text-[10px]">{config.role}</p>
+      </div>
+      <SocialLinks socials={config.socials} />
       <Link
         className="whitespace-nowrap underline decoration-(--accent) underline-offset-1"
         href="#home"

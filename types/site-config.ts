@@ -3,5 +3,5 @@ export interface SiteConfig {
   role: string;
   introduction: string;
   email: string | null;
-  socials: { label: string; url: string; placeholder?: boolean }[];
+  socials: { label: string; url: string }[];
 }

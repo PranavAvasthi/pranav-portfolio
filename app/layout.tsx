@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Great_Vibes } from "next/font/google";
+import { getSiteConfig } from "@/lib/data/get-site-config";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -15,14 +16,16 @@ const greatVibes = Great_Vibes({
   preload: false,
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Pranav Avasthi — SWE 3 · Next.js & React Native",
-    template: "%s — Pranav Avasthi",
-  },
-  description:
-    "Pranav Avasthi is a SWE 3 developer working with Next.js and React Native. Explore web and mobile work, engineering decisions, and an interactive day-to-night portfolio.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getSiteConfig();
+  return {
+    title: {
+      default: `${config.name} — ${config.role}`,
+      template: `%s — ${config.name}`,
+    },
+    description: `${config.name} is a ${config.role}. ${config.introduction}`,
+  };
+}
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

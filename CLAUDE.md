@@ -160,7 +160,13 @@ Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc
 
 ## 7. Keeping this file current
 
-The hero states the owner-confirmed SWE 3, Next.js, and React Native focus. Sample projects and experience stay visibly labeled until replaced. Social fixtures with `placeholder: true` render as plain labeled text; replace the URL and clear that flag to publish a working link. Project case studies live in the typed project fixture and are rendered on the server; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project anchors. The shorter hero headline keeps role, introduction, and work actions prominent without adding motion.
+Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Sample projects and experience stay visibly labeled until replaced. Project case studies live in the typed project fixture and are rendered on the server; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project anchors. The shorter hero headline keeps role, introduction, and work actions prominent.
+
+The hero-only phone is a live, non-interactive iframe of `/?embed=true`, mounted after hydration only at viewport widths of at least 900px. The page awaits the Next.js 16 `searchParams` promise and suppresses the phone when `embed=true`, which prevents recursive iframes. Its small idle movement stops under reduced motion. This deliberate product proof balances the hero without expanding the celestial scene.
+
+The header exposes every story section. Its home link stays as a compact `PA` monogram on touch and narrow screens; precise mouse hover or keyboard focus on larger screens expands the name in two stable pieces—`ranav` after `P`, then `vasthi` after `A`—and draws one vermilion curve beneath it. Section links share a left-to-right vermilion underline on hover and focus. This avoids repeating the full signature while keeping the owner identity available in the navigation.
+
+Primary actions keep the fixed vermilion identity color. Hover sweeps a lighter vermilion fill from left to right and lifts the control slightly with a soft foreground-derived shadow; reduced motion keeps the fill response and removes the movement.
 
 Update this file whenever you:
 

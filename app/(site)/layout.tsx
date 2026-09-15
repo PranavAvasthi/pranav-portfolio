@@ -14,7 +14,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
       </Link>
       <SiteHeader name={config.name} />
       <main id="main-content">{children}</main>
-      <SiteFooter name={config.name} />
+      <SiteFooter config={config} />
       <LocalTimeReadout />
     </CelestialScene>
   );
