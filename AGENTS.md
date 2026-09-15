@@ -135,6 +135,7 @@ export async function getProjectBySlug(
 - Both canvases use `hooks/use-visible-canvas.ts`: one dirty frame per change, no recurring animation loop, IntersectionObserver suspension off-screen, and cancellation while the document is hidden. Canvas drawing is in colocated `*.utils.ts` files; `lib/animations/` stays pure. Background stars stop redrawing before night and once fully visible. Mobile uses 48 stars and caps canvas pixel density at 1.5; desktop uses 130 and caps it at 2.
 - Skills have stable IDs, groups, desktop/mobile percentage positions, and `connectsTo` edges in `data/skills.json`, typed by `types/skill.ts` and read via `getSkills()`. The canvas has 44px keyboard/touch controls and a native list alternative.
 - Reduced motion quantizes progress into day (`0.18`), dusk (`0.54`), and night (`1`) at `0.38`/`0.62`. Fixed layers crossfade for 160ms; bodies stay stationary. Preference changes are handled live. No clouds, shooting stars, or additional celestial bodies are included.
+- The persistent `CelestialLoader` plays on full document loads and reloads, skips embedded phone previews, and stays unmounted during client navigation. `(site)/loading.tsx` delegates a route-readiness marker to `RouteLoading`; `useCelestialLoader` combines that with hydration, fonts, and hero images. The loader uses the shared dawn palette and stationary horizon, with no stars or celestial bodies. A 500ms visibility floor precedes a 280ms fade; reduced motion resolves the static state directly. The signature waits for the loader to finish.
 - The installed Next.js 16.3 error boundary uses `retry()`; route files delegate error/loading markup to `components/common/`.
 - Experience is grouped by employer in `data/experience.json`, with ordered role tenures nested beneath the company record. Nullable email and social links in `data/site-config.json` control contact actions; never invent an address or publish a dead contact button.
 
@@ -156,6 +157,8 @@ This portfolio's visual identity is a deliberate choice, not a template. Before 
 - Every new visual pattern gets a short rationale added to this section so the design stays coherent as sections are added over time.
 
 Use Tailwind utilities for static component layout, spacing, and small type treatments. Keep `app/globals.css` for the shared sky and contrast variables, scroll-driven or SVG/canvas states, and responsive geometry that must stay coordinated across the scene. This keeps ordinary structure next to its markup while preserving the single orchestrated visual system.
+
+The loading entrance stays in the hero's dawn palette with a compact “A new day.” title and a thin vermilion line driven by real asset readiness. The stationary background fades into the page without sun/moon choreography or a night-to-day transition. This keeps the entrance quiet and lets the hero be the first bold moment.
 
 The continuous sky is the single expressive gesture. Six sky/horizon pairs anchor it: apricot dawn `#8CBAD9`/`#F6CFAD`, clear midday `#78BCE5`/`#D8EAF0`, bronze afternoon `#8D796F`/`#B19577`, velvet dusk `#261637`/`#462A40`, blue hour `#26375F`/`#66628A`, and deep indigo `#111D3D`/`#263557`. Text colors are selected against the full composite background for at least 4.5:1 contrast; no dusk flattening layer is needed at the named stops.
 

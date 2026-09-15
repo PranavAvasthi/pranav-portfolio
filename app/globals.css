@@ -142,6 +142,46 @@ summary:focus-visible {
 .site-content {
   position: relative;
 }
+.celestial-loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  isolation: isolate;
+  overflow: hidden;
+  place-items: center;
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  color: var(--foreground);
+}
+.celestial-loader[hidden] {
+  display: none;
+}
+.loader-backdrop {
+  position: absolute;
+  z-index: 0;
+}
+.loader-progress {
+  transform: scaleX(var(--loader-progress, 0));
+  transform-origin: left;
+}
+@media (scripting: enabled) {
+  .celestial-loader {
+    display: grid;
+  }
+  body:has([data-celestial-loading]:not([hidden])) {
+    overflow: hidden;
+  }
+}
+.celestial-loader[data-reduced-motion="true"] .loader-backdrop,
+.celestial-loader[data-reduced-motion="true"] .loader-progress-track {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .celestial-loader .loader-backdrop,
+  .celestial-loader .loader-progress-track {
+    display: none;
+  }
+}
 .page-width {
   width: min(1120px, calc(100% - 112px));
   margin-inline: auto;

@@ -10,6 +10,7 @@ import {
   signatureProgress,
 } from "@/lib/animations/signature-motion";
 import type { SignatureData } from "@/types/signature";
+import { LOADER_COMPLETE_EVENT } from "@/lib/animations/loader-sequence";
 
 interface SignatureProps {
   name: string;
@@ -160,16 +161,22 @@ export function Signature({ name, signature }: SignatureProps) {
     const onVisibility = () => {
       cancelAnimationFrame(frame);
       previousFrame = undefined;
-      if (!document.hidden && !finished.current)
+      if (
+        !document.hidden &&
+        !finished.current &&
+        !document.querySelector("[data-celestial-loading]")
+      )
         frame = requestAnimationFrame(draw);
     };
     media.addEventListener("change", onPreference);
     document.addEventListener("visibilitychange", onVisibility);
-    if (!document.hidden) frame = requestAnimationFrame(draw);
+    document.addEventListener(LOADER_COMPLETE_EVENT, onVisibility);
+    onVisibility();
     return () => {
       cancelAnimationFrame(frame);
       media.removeEventListener("change", onPreference);
       document.removeEventListener("visibilitychange", onVisibility);
+      document.removeEventListener(LOADER_COMPLETE_EVENT, onVisibility);
     };
   }, [signature]);
 
