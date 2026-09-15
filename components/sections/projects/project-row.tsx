@@ -57,7 +57,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
                 {metric.url ? (
                   <a href={metric.url} target="_blank" rel="noreferrer">
                     {metric.value && (
-                      <span className="font-semibold text-(--foreground)">
+                      <span className="font-semibold text-foreground">
                         {metric.value}{" "}
                       </span>
                     )}
@@ -66,7 +66,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
                 ) : (
                   <span>
                     {metric.value && (
-                      <span className="font-semibold text-(--foreground)">
+                      <span className="font-semibold text-foreground">
                         {metric.value}{" "}
                       </span>
                     )}

@@ -170,7 +170,9 @@ Identity, role, introduction, email, and social destinations have one source in 
 
 `components/common/phone-frame.tsx` owns the device bezel for the hero's live preview. Project logos and screenshots render as standalone imagery without a device frame. The hero preview uses a non-interactive iframe of `/?embed=true`, and the home page suppresses it when that guard is present, preventing recursive phone frames. The hero phone is mounted after hydration only at viewport widths of at least 900px, and its small idle movement stops under reduced motion. This deliberate product proof balances the page without expanding the celestial scene.
 
-The header exposes every story section. Its home link stays as a compact `PA` monogram on touch and narrow screens; precise mouse hover or keyboard focus on larger screens expands the name in two stable pieces-`ranav` after `P`, then `vasthi` after `A`-and draws one vermilion curve beneath it. Section links share a left-to-right vermilion underline on hover and focus. This avoids repeating the full signature while keeping the owner identity available in the navigation. Same-page fragments use the shared `SectionLink`, which explicitly scrolls an already-active hash while leaving cross-route navigation to Next.js.
+The header exposes every story section. Its home link shows the full name beside the identity mark and keeps one vermilion curve beneath it at every viewport size. Section links share a left-to-right vermilion underline on hover and focus. Same-page fragments use the shared `SectionLink`, which explicitly scrolls an already-active hash while leaving cross-route navigation to Next.js.
+
+The supplied identity mark lives at `app/icon.png`, which Next's App Router uses for the site icon. The same mark appears immediately before the header's `PA` home link as a small, responsive `next/image`, tying the browser identity to the visible navigation mark.
 
 Primary actions keep the fixed vermilion identity color. Hover sweeps a lighter vermilion fill from left to right and lifts the control slightly with a soft foreground-derived shadow; reduced motion keeps the fill response and removes the movement.
 
