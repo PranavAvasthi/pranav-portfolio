@@ -18,12 +18,12 @@ Open `http://localhost:3000`. Bricolage Grotesque and Great Vibes use `next/font
 
 Edit the JSON fixtures; components read them through async accessors in `lib/data/`.
 
-- `data/site-config.json`: name, introduction, email, and social links. Email is currently null and profiles are empty; adding real values enables the contact links.
+- `data/site-config.json`: name, role, introduction, email, and social links.
 - `data/experience.json`: one employer record with ordered role tenures and employment context.
-- `data/projects.json`: the implemented portfolio and a labeled future-project placeholder. Each supports an optional destination and an expandable description.
+- `data/projects.json`: Talenzap and the portfolio case study. Projects can supply typed logos or screenshots, platform labels, and linked proof metrics.
 - `data/skills.json`: initial skill content, constellation groups, desktop/mobile percentage coordinates, and connection IDs. Review the initial skill set before publishing.
 
-The home page composes six Server Components in `app/(site)/page.tsx`. The layout mounts a client scene around server-rendered children. No components import JSON directly.
+The home page composes six Server Components in `app/(site)/page.tsx`. Project deep-dives use statically generated `app/(site)/projects/[slug]/page.tsx` routes. The layout mounts a client scene around server-rendered children, and no component imports JSON directly.
 
 ## One shared sky
 

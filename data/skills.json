@@ -3,7 +3,7 @@
     "id": "typescript",
     "evidence": {
       "label": "See the typed portfolio build",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "TypeScript",
     "group": "Interface",
@@ -16,7 +16,7 @@
     "id": "react",
     "evidence": {
       "label": "See the component architecture",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "React",
     "group": "Interface",
@@ -29,7 +29,7 @@
     "id": "nextjs",
     "evidence": {
       "label": "See the server-rendered portfolio",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "Next.js",
     "group": "Interface",
@@ -96,7 +96,7 @@
     "id": "accessibility",
     "evidence": {
       "label": "Explore the contrast decisions",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "Accessibility",
     "group": "Craft",
@@ -109,7 +109,7 @@
     "id": "performance",
     "evidence": {
       "label": "See the rendering trade-offs",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "Web performance",
     "group": "Craft",
@@ -122,7 +122,7 @@
     "id": "testing",
     "evidence": {
       "label": "See what this portfolio checks",
-      "href": "#project-daylight"
+      "href": "/projects/a-day-on-the-web"
     },
     "name": "Testing",
     "group": "Craft",

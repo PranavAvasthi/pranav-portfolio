@@ -44,7 +44,7 @@ export async function HeroSection({
           <Link className="primary-link" href="#projects">
             Explore my work
           </Link>
-          <Link className="text-link" href="#project-daylight">
+          <Link className="text-link" href="/projects/a-day-on-the-web">
             How I built this
           </Link>
         </div>

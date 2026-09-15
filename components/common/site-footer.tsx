@@ -16,7 +16,7 @@ export function SiteFooter({ config }: SiteFooterProps) {
       <SocialLinks socials={config.socials} />
       <Link
         className="whitespace-nowrap underline decoration-(--accent) underline-offset-1"
-        href="#home"
+        href="/#home"
       >
         Back to daylight
       </Link>

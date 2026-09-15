@@ -1,13 +1,38 @@
 [
   {
-    "slug": "daylight",
+    "slug": "talenzap",
+    "title": "Talenzap",
+    "tagline": "Skill-Based Video Competition Platform",
+    "description": "A skill-based video competition platform where creators showcase their talent through weekly challenges, compete through public voting, and earn brand-sponsored rewards. Built to support diverse creator communities while enabling brands to launch sponsored competitions and engage audiences across India.",
+    "platform": ["mobile"],
+    "roleNote": "My role on this one's worth a conversation — reach out.",
+    "technologies": ["React Native", "Expo", "TypeScript", "EAS"],
+    "metrics": [
+      {
+        "label": "Play Store",
+        "value": "4.7★",
+        "url": "https://play.google.com/store/apps/details?id=com.talenzap.mobileapp&hl=en_IN"
+      },
+      {
+        "label": "App Store",
+        "value": "4.9★",
+        "url": "https://apps.apple.com/in/app/talenzap/id6756573930"
+      }
+    ],
+    "image": {
+      "kind": "logo",
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789462228/Talenzap_cqyth3.png",
+      "alt": "Talenzap app logo"
+    }
+  },
+  {
+    "slug": "a-day-on-the-web",
     "title": "A day on the web",
-    "category": "Personal portfolio",
+    "category": "You're looking at it right now",
+    "platform": ["web"],
+    "url": "https://pranavavasthi.vercel.app/",
     "summary": "One continuous sky. Six chapters. A portfolio that finds its own rhythm between first light and nightfall.",
-    "details": "A scroll-driven scene built with a shared celestial arc, an adaptive sky palette, and interactive canvas constellations. Server-rendered content sits over a small client-side scene, with a stationary three-state experience for reduced motion.",
     "technologies": ["Next.js", "TypeScript", "Canvas"],
-    "url": null,
-    "sample": false,
     "caseStudy": {
       "problem": "Make a continuously changing sky feel like one place, while keeping the content readable, the page responsive, and motion optional.",
       "decisions": [
@@ -28,25 +53,5 @@
       "outcome": "A statically rendered portfolio with a shared day-to-night scene and a separately controlled handwriting entrance. The sky calculations, motion geometry, and touch-target spacing have automated checks.",
       "experiment": "sky-contrast"
     }
-  },
-  {
-    "slug": "fieldnotes-mobile",
-    "title": "Fieldnotes",
-    "category": "React Native · illustrative case study",
-    "summary": "An example offline-first mobile app for capturing notes when connectivity is unreliable. Replace this with your own mobile project and screenshots.",
-    "details": "Example decisions to describe: keep edits on-device, queue synchronization, expose pending changes, and handle conflicts explicitly. Add the approach you actually shipped and the device/network conditions you tested.",
-    "technologies": ["React Native", "TypeScript", "Offline storage"],
-    "url": null,
-    "sample": true
-  },
-  {
-    "slug": "operations-web",
-    "title": "Operations workspace",
-    "category": "Next.js · illustrative case study",
-    "summary": "An example dashboard for moving from a list of records to a clear next action. Replace this with a real web product you contributed to.",
-    "details": "Example decisions to describe: use URL-backed filters, paginate large datasets, put authorization on the server, and recover failed mutations without losing user input. Include your ownership, trade-offs, and verified outcomes.",
-    "technologies": ["Next.js", "React", "TypeScript"],
-    "url": null,
-    "sample": true
   }
 ]
