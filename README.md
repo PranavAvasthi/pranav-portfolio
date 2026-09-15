@@ -19,7 +19,7 @@ Open `http://localhost:3000`. Bricolage Grotesque and Great Vibes use `next/font
 Edit the JSON fixtures; components read them through async accessors in `lib/data/`.
 
 - `data/site-config.json`: name, introduction, email, and social links. Email is currently null and profiles are empty; adding real values enables the contact links.
-- `data/experience.json`: the current entries are explicitly illustrative. Replace them with real career history and set `sample` to false.
+- `data/experience.json`: one employer record with ordered role tenures and employment context.
 - `data/projects.json`: the implemented portfolio and a labeled future-project placeholder. Each supports an optional destination and an expandable description.
 - `data/skills.json`: initial skill content, constellation groups, desktop/mobile percentage coordinates, and connection IDs. Review the initial skill set before publishing.
 

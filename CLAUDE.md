@@ -135,7 +135,7 @@ export async function getProjectBySlug(
 - Skills have stable IDs, groups, desktop/mobile percentage positions, and `connectsTo` edges in `data/skills.json`, typed by `types/skill.ts` and read via `getSkills()`. The canvas has 44px keyboard/touch controls and a native list alternative.
 - Reduced motion quantizes progress into day (`0.18`), dusk (`0.54`), and night (`1`) at `0.38`/`0.62`. Fixed layers crossfade for 160ms; bodies stay stationary. Preference changes are handled live. No clouds, shooting stars, or additional celestial bodies are included.
 - The installed Next.js 16.3 error boundary uses `retry()`; route files delegate error/loading markup to `components/common/`.
-- Career entries are explicitly illustrative until replaced. Nullable email and social links in `data/site-config.json` control contact actions; never invent an address or publish a dead contact button.
+- Experience is grouped by employer in `data/experience.json`, with ordered role tenures nested beneath the company record. Nullable email and social links in `data/site-config.json` control contact actions; never invent an address or publish a dead contact button.
 
 ## 5. Code style
 
@@ -162,7 +162,7 @@ Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc
 
 ## 7. Keeping this file current
 
-Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Sample projects and experience stay visibly labeled until replaced. Project case studies live in the typed project fixture and are rendered on the server; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project anchors. The shorter hero headline keeps role, introduction, and work actions prominent.
+Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Sample projects stay visibly labeled until replaced. Experience uses one company record with nested role tenures so promotions read as progression within the same employer. Role dates are stored as calendar months; `formatExperiencePeriod()` derives inclusive tenure, while the current role refreshes against the visitor's date after hydration. Project case studies live in the typed project fixture and are rendered on the server; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project anchors. The shorter hero headline keeps role, introduction, and work actions prominent.
 
 The hero-only phone is a live, non-interactive iframe of `/?embed=true`, mounted after hydration only at viewport widths of at least 900px. The page awaits the Next.js 16 `searchParams` promise and suppresses the phone when `embed=true`, which prevents recursive iframes. Its small idle movement stops under reduced motion. This deliberate product proof balances the hero without expanding the celestial scene.
 

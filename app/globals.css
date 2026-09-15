@@ -544,11 +544,6 @@ h2 {
   left: -3px;
   top: 7px;
 }
-.organization {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
 h3 {
   font-size: 27px;
   line-height: 1.2;

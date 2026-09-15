@@ -1,26 +1,22 @@
-[
-  {
-    "id": "foundations",
-    "period": "Example milestone",
-    "title": "Shipping web experiences",
-    "organization": "Sample experience · company and dates to replace",
-    "description": "Describe a Next.js product you delivered: the user problem, the parts you owned, how you handled data and rendering, and what changed after release.",
-    "sample": true
-  },
-  {
-    "id": "practice",
-    "period": "Example milestone",
-    "title": "Bringing the product to mobile",
-    "organization": "Sample experience · company and dates to replace",
-    "description": "Describe a React Native feature you owned across platforms. Include a concrete device, networking, navigation, or release problem and how you resolved it.",
-    "sample": true
-  },
-  {
-    "id": "present",
-    "period": "Example milestone",
-    "title": "Owning the engineering decisions",
-    "organization": "Sample experience · company and dates to replace",
-    "description": "Describe your software-engineering scope with real examples: a design decision, a difficult rollout, a cross-team dependency, or a teammate you helped. Add only outcomes you can explain and substantiate.",
-    "sample": true
-  }
-]
+{
+  "company": "GeekyAnts",
+  "employmentDetails": "Full-time · Bengaluru, Karnataka, India · On-site",
+  "roles": [
+    {
+      "id": "software-engineer-i",
+      "position": "Software Engineer I",
+      "startMonth": "2024-05",
+      "endMonth": "2026-04",
+      "title": "Building across web and mobile",
+      "description": "Joined GeekyAnts building and shipping features across web and mobile client engagements with Next.js and React Native. Worked closely with design and backend teams to take work from spec to production, taking on increasingly complex parts of each codebase as ownership grew."
+    },
+    {
+      "id": "software-engineer-iii",
+      "position": "Software Engineer III",
+      "startMonth": "2026-04",
+      "endMonth": null,
+      "title": "Owning technical scope",
+      "description": "Promoted to Software Engineer III after two years. Now own larger technical scope on client engagements — architecture and implementation decisions, code review, and coordination across web and mobile workstreams — while mentoring newer engineers joining the team."
+    }
+  ]
+}

@@ -1,10 +1,13 @@
 import type { Experience } from "@/types/experience";
+import { ExperiencePeriod } from "@/components/sections/experience/experience-period";
 
 interface ExperienceSectionProps {
-  experience: Experience[];
+  experience: Experience;
 }
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
+  const initialDate = new Date().toISOString();
+
   return (
     <section
       id="experience"
@@ -23,19 +26,21 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
         </h2>
         <span className="time-note">Into the golden hours</span>
       </div>
-      {experience.some((item) => item.sample) && (
-        <p className="sample-note">
-          An illustrative journey. Career details to come.
+      <div className="border-t border-current/25 pt-7">
+        <p className="text-[clamp(1.75rem,3vw,2.5rem)] leading-none font-[650] tracking-[-0.045em]">
+          {experience.company}
         </p>
-      )}
+        <p className="mt-3 text-sm text-(--muted)">
+          {experience.employmentDetails}
+        </p>
+      </div>
       <ol className="experience-timeline">
-        {experience.map((item) => (
-          <li key={item.id}>
-            <p className="experience-period">{item.period}</p>
+        {experience.roles.map((role) => (
+          <li key={role.id}>
+            <ExperiencePeriod role={role} initialDate={initialDate} />
             <div className="experience-copy">
-              <p className="organization">{item.organization}</p>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <h3>{role.title}</h3>
+              <p>{role.description}</p>
             </div>
           </li>
         ))}

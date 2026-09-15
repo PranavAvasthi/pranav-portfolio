@@ -1,8 +1,14 @@
-export interface Experience {
+export interface ExperienceRole {
   id: string;
-  period: string;
+  position: string;
+  startMonth: string;
+  endMonth: string | null;
   title: string;
-  organization: string;
   description: string;
-  sample: boolean;
+}
+
+export interface Experience {
+  company: string;
+  employmentDetails: string;
+  roles: ExperienceRole[];
 }
