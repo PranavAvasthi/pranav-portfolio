@@ -1,4 +1,5 @@
 import type { SiteConfig } from "@/types/site-config";
+import { SocialLinks } from "@/components/common/social-links";
 
 interface ContactSectionProps {
   config: SiteConfig;
@@ -32,23 +33,9 @@ export function ContactSection({ config }: ContactSectionProps) {
       ) : (
         <p className="contact-pending">Contact details coming soon.</p>
       )}
-      {config.socials.length > 0 && (
-        <nav
-          className="social-links mt-7 flex gap-6 text-sm leading-[normal]"
-          aria-label="Social profiles"
-        >
-          {config.socials.map((social) => (
-            <a
-              key={social.url}
-              href={social.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {social.label}
-            </a>
-          ))}
-        </nav>
-      )}
+      <div className="mt-7">
+        <SocialLinks socials={config.socials} />
+      </div>
       <p className="goodnight">
         Thanks for spending a little of your day here.
       </p>

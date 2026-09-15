@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { SiteConfig } from "@/types/site-config";
 import { getSignature } from "@/lib/data/get-signature";
 import { Signature } from "@/components/sections/hero/signature";
+import { SocialLinks } from "@/components/common/social-links";
 
 interface HeroSectionProps {
   config: SiteConfig;
@@ -21,20 +22,25 @@ export async function HeroSection({ config }: HeroSectionProps) {
           <span className="shrink-0">Hello, I’m</span>
           <Signature name={config.name} signature={signature} />
         </p>
-        <h1 id="hero-title">
-          A curious mind.
-          <br />A builder
+        <p className="mb-5 text-sm font-semibold text-(--muted)">
+          {config.role}
+        </p>
+        <h1 id="hero-title" className="hero-title">
+          Web & mobile.
           <br />
-          at heart<span className="title-period">.</span>
+          Carefully built<span className="title-period">.</span>
         </h1>
         <p className="hero-description">{config.introduction}</p>
         <div className="flex flex-wrap items-center gap-6.5 text-sm leading-5.25 max-[699px]:gap-5 max-[699px]:text-xs max-[699px]:leading-4.5">
           <Link className="primary-link" href="#projects">
             Explore my work
           </Link>
-          <Link className="text-link" href="#about">
-            A little about me
+          <Link className="text-link" href="#project-daylight">
+            How I built this
           </Link>
+        </div>
+        <div className="mt-4">
+          <SocialLinks socials={config.socials} />
         </div>
       </div>
       <div className="flex justify-between gap-5 pt-17.5 pb-9 text-xs text-(--muted) max-[699px]:pt-16.5 max-[699px]:text-[10px]">

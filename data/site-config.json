@@ -1,7 +1,18 @@
 {
   "name": "Pranav Avasthi",
-  "role": "Developer & curious builder",
-  "introduction": "I turn ideas into thoughtful digital experiences. A little engineering, a little curiosity, and a lot of care for how it all feels.",
+  "role": "SWE 3 · Next.js & React Native",
+  "introduction": "I build for the web and the phone with Next.js, React Native and TypeScript. I care about the whole experience—from the architecture behind a screen to the details that make it feel right.",
   "email": null,
-  "socials": []
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://example.com/github",
+      "placeholder": true
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://example.com/linkedin",
+      "placeholder": true
+    }
+  ]
 }

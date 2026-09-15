@@ -17,11 +17,11 @@ const greatVibes = Great_Vibes({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pranav Avasthi — Developer & curious builder",
+    default: "Pranav Avasthi — SWE 3 · Next.js & React Native",
     template: "%s — Pranav Avasthi",
   },
   description:
-    "Thoughtful digital experiences, ideas made real, and a little curiosity. Explore Pranav Avasthi’s work from first light to nightfall.",
+    "Pranav Avasthi is a SWE 3 developer working with Next.js and React Native. Explore web and mobile work, engineering decisions, and an interactive day-to-night portfolio.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

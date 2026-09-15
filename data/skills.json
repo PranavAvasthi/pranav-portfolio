@@ -1,6 +1,10 @@
 [
   {
     "id": "typescript",
+    "evidence": {
+      "label": "See the typed portfolio build",
+      "href": "#project-daylight"
+    },
     "name": "TypeScript",
     "group": "Interface",
     "description": "Clear contracts, expressive types, and fewer surprises between idea and implementation.",
@@ -10,6 +14,10 @@
   },
   {
     "id": "react",
+    "evidence": {
+      "label": "See the component architecture",
+      "href": "#project-daylight"
+    },
     "name": "React",
     "group": "Interface",
     "description": "Composable interfaces with deliberate state and small, reusable components.",
@@ -19,12 +27,25 @@
   },
   {
     "id": "nextjs",
+    "evidence": {
+      "label": "See the server-rendered portfolio",
+      "href": "#project-daylight"
+    },
     "name": "Next.js",
     "group": "Interface",
     "description": "Server-rendered experiences, thoughtful routing, and fast first impressions.",
     "position": { "x": 33, "y": 47 },
     "mobilePosition": { "x": 78, "y": 21 },
     "connectsTo": ["html"]
+  },
+  {
+    "id": "react-native",
+    "name": "React Native",
+    "group": "Interface",
+    "description": "Building mobile interfaces with React and TypeScript, with attention to platform behavior and the experience on a real device.",
+    "position": { "x": 39, "y": 26 },
+    "mobilePosition": { "x": 78, "y": 8 },
+    "connectsTo": ["react", "nextjs"]
   },
   {
     "id": "html",
@@ -73,6 +94,10 @@
   },
   {
     "id": "accessibility",
+    "evidence": {
+      "label": "Explore the contrast decisions",
+      "href": "#project-daylight"
+    },
     "name": "Accessibility",
     "group": "Craft",
     "description": "Keyboard access, readable contrast, and motion that respects the person using it.",
@@ -82,6 +107,10 @@
   },
   {
     "id": "performance",
+    "evidence": {
+      "label": "See the rendering trade-offs",
+      "href": "#project-daylight"
+    },
     "name": "Web performance",
     "group": "Craft",
     "description": "Less work per frame, smaller client boundaries, and measurement before assumptions.",
@@ -91,6 +120,10 @@
   },
   {
     "id": "testing",
+    "evidence": {
+      "label": "See what this portfolio checks",
+      "href": "#project-daylight"
+    },
     "name": "Testing",
     "group": "Craft",
     "description": "Checking the behavior that matters, from pure functions to a real browser.",

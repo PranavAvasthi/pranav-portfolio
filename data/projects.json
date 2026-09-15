@@ -7,15 +7,45 @@
     "details": "A scroll-driven scene built with a shared celestial arc, an adaptive sky palette, and interactive canvas constellations. Server-rendered content sits over a small client-side scene, with a stationary three-state experience for reduced motion.",
     "technologies": ["Next.js", "TypeScript", "Canvas"],
     "url": null,
-    "sample": false
+    "sample": false,
+    "caseStudy": {
+      "problem": "Make a continuously changing sky feel like one place, while keeping the content readable, the page responsive, and motion optional.",
+      "decisions": [
+        {
+          "title": "One timeline, shared by the scene",
+          "description": "Cache section positions and update CSS variables from one animation-frame-throttled scroll subscription. Both celestial bodies use the same arc function with different progress ranges."
+        },
+        {
+          "title": "Render only what needs to change",
+          "description": "Keep portfolio content on the server. Draw stars on canvas when the view changes, suspend off-screen canvases, and cap pixel density on smaller screens."
+        },
+        {
+          "title": "Treat accessibility as part of the design",
+          "description": "Check normal and muted text against the changing palette. Offer three stationary sky states for reduced motion, keyboard-accessible skill points, and a text list alternative."
+        }
+      ],
+      "tradeoff": "An expressive background makes text contrast harder. Between some palette stops, a calculated reading layer softens the gradient just enough to maintain the target contrast. Legibility takes priority over an untouched sky.",
+      "outcome": "A statically rendered portfolio with a shared day-to-night scene and a separately controlled handwriting entrance. The sky calculations, motion geometry, and touch-target spacing have automated checks.",
+      "experiment": "sky-contrast"
+    }
   },
   {
-    "slug": "next-chapter",
-    "title": "The next chapter",
-    "category": "A space for future work",
-    "summary": "Good things take shape one considered decision at a time. More work will find a home here.",
-    "details": "This is a placeholder for a future project. Replace it with the problem, the decisions you made, and the result when your next case study is ready.",
-    "technologies": [],
+    "slug": "fieldnotes-mobile",
+    "title": "Fieldnotes",
+    "category": "React Native · illustrative case study",
+    "summary": "An example offline-first mobile app for capturing notes when connectivity is unreliable. Replace this with your own mobile project and screenshots.",
+    "details": "Example decisions to describe: keep edits on-device, queue synchronization, expose pending changes, and handle conflicts explicitly. Add the approach you actually shipped and the device/network conditions you tested.",
+    "technologies": ["React Native", "TypeScript", "Offline storage"],
+    "url": null,
+    "sample": true
+  },
+  {
+    "slug": "operations-web",
+    "title": "Operations workspace",
+    "category": "Next.js · illustrative case study",
+    "summary": "An example dashboard for moving from a list of records to a clear next action. Replace this with a real web product you contributed to.",
+    "details": "Example decisions to describe: use URL-backed filters, paginate large datasets, put authorization on the server, and recover failed mutations without losing user input. Include your ownership, trade-offs, and verified outcomes.",
+    "technologies": ["Next.js", "React", "TypeScript"],
     "url": null,
     "sample": true
   }

@@ -1,26 +1,26 @@
 [
   {
     "id": "foundations",
-    "period": "The beginning",
-    "title": "Learning by making",
-    "organization": "Foundations",
-    "description": "The first working version. The first useful mistake. A growing interest in understanding how things work beneath the surface.",
+    "period": "Example milestone",
+    "title": "Shipping web experiences",
+    "organization": "Sample experience · company and dates to replace",
+    "description": "Describe a Next.js product you delivered: the user problem, the parts you owned, how you handled data and rendering, and what changed after release.",
     "sample": true
   },
   {
     "id": "practice",
-    "period": "Along the way",
-    "title": "Connecting the pieces",
-    "organization": "Practice",
-    "description": "Bringing interfaces, data, and interaction together. Learning that the smallest decisions often make the biggest difference.",
+    "period": "Example milestone",
+    "title": "Bringing the product to mobile",
+    "organization": "Sample experience · company and dates to replace",
+    "description": "Describe a React Native feature you owned across platforms. Include a concrete device, networking, navigation, or release problem and how you resolved it.",
     "sample": true
   },
   {
     "id": "present",
-    "period": "Now",
-    "title": "Building with intention",
-    "organization": "The next chapter",
-    "description": "Making room for more ambitious problems, closer collaboration, and work that is useful to the people on the other side of the screen.",
+    "period": "Example milestone",
+    "title": "Owning the engineering decisions",
+    "organization": "Sample experience · company and dates to replace",
+    "description": "Describe your SWE 3 scope with real examples: a design decision, a difficult rollout, a cross-team dependency, or a teammate you helped. Add only outcomes you can explain and substantiate.",
     "sample": true
   }
 ]

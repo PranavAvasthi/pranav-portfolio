@@ -160,6 +160,8 @@ Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc
 
 ## 7. Keeping this file current
 
+The hero states the owner-confirmed SWE 3, Next.js, and React Native focus. Sample projects and experience stay visibly labeled until replaced. Social fixtures with `placeholder: true` render as plain labeled text; replace the URL and clear that flag to publish a working link. Project case studies live in the typed project fixture and are rendered on the server; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Optional skill evidence links connect to real project anchors. The shorter hero headline keeps role, introduction, and work actions prominent without adding motion.
+
 Update this file whenever you:
 
 - Add a new top-level folder or change what a folder is responsible for.

@@ -19,19 +19,20 @@ export function AboutSection() {
       </div>
       <div className="about-copy">
         <p className="lead-copy">
-          I like the space between
-          <br className="desktop-break" /> “what if” and “it works.”
+          One product mindset.
+          <br className="desktop-break" /> Web and mobile craft.
         </p>
         <div className="body-copy">
           <p>
-            That’s where an idea becomes something you can use. Where a rough
-            sketch turns into an interface, and a complicated problem starts to
-            make sense.
+            I’m a SWE 3 developer working with Next.js and React Native. My
+            focus is the connection between a useful interface and the
+            engineering decisions that support it.
           </p>
           <p>
-            I’m drawn to thoughtful products, clear code, and details that feel
-            effortless. This little corner of the web is a place for the things
-            I’m building—and the things I’m learning along the way.
+            This site is one example: the content renders on the server, the sky
+            follows one shared timeline, and the interactive details have
+            keyboard and reduced-motion alternatives. Open the portfolio case
+            study below to see the decisions behind the experience.
           </p>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Project } from "@/types/project";
+import { ProjectCaseStudy } from "@/components/sections/projects/project-case-study";
 
 interface ProjectRowProps {
   project: Project;
@@ -6,11 +7,15 @@ interface ProjectRowProps {
 
 export function ProjectRow({ project }: ProjectRowProps) {
   return (
-    <article className="project-row">
+    <article className="project-row" id={`project-${project.slug}`}>
       <div>
         <p className="project-category">{project.category}</p>
         <h3>{project.title}</h3>
-        {project.sample && <span className="sample-note">Coming next</span>}
+        {project.sample && (
+          <span className="sample-note">
+            Sample project · replace before publishing
+          </span>
+        )}
       </div>
       <div className="project-copy">
         <p>{project.summary}</p>
@@ -31,9 +36,15 @@ export function ProjectRow({ project }: ProjectRowProps) {
         )}
         <details className="project-details">
           <summary>
-            {project.sample ? "About this space" : "Behind the build"}
+            {project.sample
+              ? "Example engineering decisions"
+              : "Behind the build · decisions & working demo"}
           </summary>
-          <p>{project.details}</p>
+          {project.caseStudy ? (
+            <ProjectCaseStudy study={project.caseStudy} />
+          ) : (
+            <p>{project.details}</p>
+          )}
         </details>
         {project.url && (
           <a

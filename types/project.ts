@@ -7,4 +7,11 @@ export interface Project {
   technologies: string[];
   url: string | null;
   sample: boolean;
+  caseStudy?: {
+    problem: string;
+    decisions: { title: string; description: string }[];
+    tradeoff: string;
+    outcome: string;
+    experiment?: "sky-contrast";
+  };
 }
