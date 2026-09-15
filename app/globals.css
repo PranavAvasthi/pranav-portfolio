@@ -353,8 +353,10 @@ summary:focus-visible {
   transform: translateX(-50%);
 }
 .project-image-preview {
-  width: min(300px, 100%);
-  margin: 34px 0 0;
+  position: relative;
+  width: min(260px, 100%);
+  aspect-ratio: 16 / 10;
+  margin: 24px 0 0;
 }
 @keyframes phone-idle {
   0%,
@@ -471,8 +473,8 @@ h1 {
   text-decoration: none;
 }
 .story-section {
-  padding-top: clamp(112px, 16vh, 180px);
-  padding-bottom: clamp(100px, 15vh, 160px);
+  padding-top: clamp(88px, 10vh, 120px);
+  padding-bottom: clamp(64px, 8vh, 88px);
   min-height: 100svh;
 }
 h2 {
@@ -814,8 +816,8 @@ h3 {
     padding: 14px 18px;
   }
   .story-section {
-    padding-top: 110px;
-    padding-bottom: 90px;
+    padding-top: 84px;
+    padding-bottom: 64px;
     min-height: auto;
   }
   h2 {

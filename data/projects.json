@@ -17,7 +17,8 @@
         "label": "App Store",
         "value": "4.9★",
         "url": "https://apps.apple.com/in/app/talenzap/id6756573930"
-      }
+      },
+      { "label": "10K+ Users" }
     ],
     "image": {
       "kind": "logo",
@@ -31,6 +32,11 @@
     "category": "You're looking at it right now",
     "platform": ["web"],
     "url": "https://pranavavasthi.vercel.app/",
+    "image": {
+      "kind": "screenshot",
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789468426/portfolio_biznlj.png",
+      "alt": "Day-to-night portfolio preview"
+    },
     "summary": "One continuous sky. Six chapters. A portfolio that finds its own rhythm between first light and nightfall.",
     "technologies": ["Next.js", "TypeScript", "Canvas"],
     "caseStudy": {
@@ -53,5 +59,62 @@
       "outcome": "A statically rendered portfolio with a shared day-to-night scene and a separately controlled handwriting entrance. The sky calculations, motion geometry, and touch-target spacing have automated checks.",
       "experiment": "sky-contrast"
     }
+  },
+  {
+    "slug": "nutralis",
+    "title": "Nutralis",
+    "tagline": "Smart Supplement & Wellness Companion",
+    "description": "A smart wellness platform designed to simplify supplement and nutrition decisions. Scan vitamins and supplements for clear insights into ingredients, benefits, and potential side effects, get personalized guidance, and stay on top of everyday wellness with reminders and family nutrition tracking.",
+    "platform": ["mobile"],
+    "metrics": [
+      {
+        "label": "Play Store",
+        "url": "https://play.google.com/store/apps/details?id=com.nutralis.app&hl=en_IN"
+      },
+      {
+        "label": "App Store",
+        "url": "https://apps.apple.com/in/app/nutralis/id6746558289"
+      }
+    ],
+    "technologies": ["React Native", "Expo", "TypeScript", "EAS"],
+    "image": {
+      "kind": "logo",
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789469647/nutralis_cobdjn.png",
+      "alt": "Nutralis app logo"
+    }
+  },
+  {
+    "slug": "solar-sense",
+    "title": "Solar Sense",
+    "tagline": "Smart Energy Management Platform",
+    "description": "A smart energy management platform for monitoring and optimizing residential energy consumption. Users can track real-time electricity flows, maximize self-consumption of solar energy, control EV charging based on excess PV generation, and optimize battery charging around dynamic electricity tariffs—all through a unified mobile experience.",
+    "platform": ["mobile"],
+    "technologies": ["React Native", "Expo", "TypeScript", "EAS"]
+  },
+  {
+    "slug": "lucky-draw",
+    "title": "Lucky Draw",
+    "tagline": "Digital Lottery & Results Platform",
+    "description": "A secure, high-traffic digital lottery platform built to streamline the complete lottery journey. Users can discover active draws, purchase and manage tickets, track participation, receive instant result updates, and manage winnings through a unified mobile experience.",
+    "platform": ["mobile"],
+    "technologies": ["React Native", "Expo", "TypeScript", "EAS"]
+  },
+  {
+    "slug": "industry-connect",
+    "title": "Industry Connect",
+    "tagline": "Smart B2B Industrial Commerce & Networking Platform",
+    "description": "A unified B2B industrial ecosystem connecting manufacturers, buyers, suppliers, MSMEs, and industry organizations. Businesses can discover verified suppliers and products, post requirements and RFQs, generate qualified enquiries, build professional networks, and participate in industrial events—all through a single digital platform designed to simplify sourcing, collaboration, and business growth.",
+    "platform": ["mobile", "web"],
+    "metrics": [{ "label": "Agentic Coding" }],
+    "technologies": ["React Native", "Expo", "EAS", "Next.js", "TypeScript"]
+  },
+  {
+    "slug": "verify-flow",
+    "title": "Verify Flow",
+    "tagline": "Candidate Background Verification Portal",
+    "description": "A secure digital platform built to simplify candidate background verification and pre-employment screening. It enables candidates to submit verification details and supporting documents, complete required checks, track case progress, and manage the entire verification journey through a streamlined self-service experience.",
+    "platform": ["web"],
+    "metrics": [{ "label": "Agentic Coding" }],
+    "technologies": ["Angular"]
   }
 ]

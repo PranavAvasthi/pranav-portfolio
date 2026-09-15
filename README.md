@@ -20,7 +20,7 @@ Edit the JSON fixtures; components read them through async accessors in `lib/dat
 
 - `data/site-config.json`: name, role, introduction, email, and social links.
 - `data/experience.json`: one employer record with ordered role tenures and employment context.
-- `data/projects.json`: Talenzap and the portfolio case study. Projects can supply typed logos or screenshots, platform labels, and linked proof metrics.
+- `data/projects.json`: Talenzap, Nutralis, SolarSense, LuckyDraw, Industry Connect, VerifyFlow, and the portfolio case study. Projects can supply typed logos or screenshots, platform labels, and linked proof metrics.
 - `data/skills.json`: initial skill content, constellation groups, desktop/mobile percentage coordinates, and connection IDs. Review the initial skill set before publishing.
 
 The home page composes six Server Components in `app/(site)/page.tsx`. Project deep-dives use statically generated `app/(site)/projects/[slug]/page.tsx` routes. The layout mounts a client scene around server-rendered children, and no component imports JSON directly.

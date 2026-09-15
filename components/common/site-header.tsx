@@ -9,7 +9,11 @@ export function SiteHeader({ name }: SiteHeaderProps) {
 
   return (
     <header className="site-header page-width flex h-26 items-center justify-between max-[699px]:h-20.5">
-      <span className="header-mark no-underline" aria-label={name}>
+      <Link
+        className="header-mark no-underline"
+        href="/#home"
+        aria-label={`${name}, home`}
+      >
         <span className="header-mark-text" aria-hidden="true">
           <span>{firstName.slice(0, 1)}</span>
           <span className="header-mark-first-rest">{firstName.slice(1)}</span>
@@ -24,7 +28,7 @@ export function SiteHeader({ name }: SiteHeaderProps) {
         >
           <path pathLength="1" d="M3 11 C48 2 78 16 119 8 C151 2 176 5 197 3" />
         </svg>
-      </span>
+      </Link>
       <nav
         className="flex items-center gap-7 text-sm leading-5.25 font-medium max-[1000px]:gap-5 max-[699px]:gap-2.5 max-[699px]:text-[10px] max-[699px]:leading-4"
         aria-label="Main navigation"

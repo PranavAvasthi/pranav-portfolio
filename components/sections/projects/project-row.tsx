@@ -26,13 +26,16 @@ export function ProjectRow({ project }: ProjectRowProps) {
             <Image
               src={project.image.src}
               alt={project.image.alt}
-              width={project.image.kind === "logo" ? 152 : 300}
-              height={project.image.kind === "logo" ? 152 : 400}
-              sizes={project.image.kind === "logo" ? "152px" : "300px"}
+              {...(project.image.kind === "logo"
+                ? { width: 152, height: 152, sizes: "152px" }
+                : {
+                    fill: true,
+                    sizes: "(max-width: 699px) 100vw, 260px",
+                  })}
               className={
                 project.image.kind === "logo"
                   ? "h-38 w-38 object-contain"
-                  : "h-auto w-full object-contain"
+                  : "object-contain"
               }
             />
           </figure>
