@@ -40,7 +40,7 @@ export function SiteHeader({ name }: SiteHeaderProps) {
         </SectionLink>
       </div>
       <nav
-        className="flex items-center gap-7 text-sm leading-5.25 font-medium max-[1000px]:gap-5 max-[699px]:hidden"
+        className="flex items-center gap-7 text-sm leading-5.25 font-medium max-[1000px]:hidden"
         aria-label="Main navigation"
       >
         <SectionLink className="site-nav-link" href="/#about">
@@ -54,6 +54,9 @@ export function SiteHeader({ name }: SiteHeaderProps) {
         </SectionLink>
         <SectionLink className="site-nav-link" href="/#skills">
           Skills
+        </SectionLink>
+        <SectionLink className="site-nav-link" href="/#contributions">
+          Contributions
         </SectionLink>
         <SectionLink className="site-nav-link" href="/#contact">
           Contact

@@ -6,6 +6,7 @@ export const SECTION_TIMELINE = [
   { id: "experience", progress: 0.38 },
   { id: "projects", progress: 0.58 },
   { id: "skills", progress: 0.78 },
+  { id: "contributions", progress: 0.86 },
   { id: "contact", progress: 0.94 },
 ] as const;
 

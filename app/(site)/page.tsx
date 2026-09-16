@@ -4,11 +4,13 @@ import { ExperienceSection } from "@/components/sections/experience/experience-s
 import { ProjectsSection } from "@/components/sections/projects/projects-section";
 import { SkillsSection } from "@/components/sections/skills/skills-section";
 import { ContactSection } from "@/components/sections/contact/contact-section";
+import { ContributionsSection } from "@/components/sections/contributions/contributions-section";
 import { getSiteConfig } from "@/lib/data/get-site-config";
 import { getExperience } from "@/lib/data/get-experience";
 import { getProjects } from "@/lib/data/get-projects";
 import { getSkills } from "@/lib/data/get-skills";
 import { getAbout } from "@/lib/data/get-about";
+import { getContributions } from "@/lib/data/get-contributions";
 
 interface HomeProps {
   searchParams: Promise<{ embed?: string | string[] }>;
@@ -19,13 +21,15 @@ export default async function Home({ searchParams }: HomeProps) {
   const embedded = Array.isArray(embed)
     ? embed.includes("true")
     : embed === "true";
-  const [config, about, experience, projects, skills] = await Promise.all([
-    getSiteConfig(),
-    getAbout(),
-    getExperience(),
-    getProjects(),
-    getSkills(),
-  ]);
+  const [config, about, experience, projects, skills, contributions] =
+    await Promise.all([
+      getSiteConfig(),
+      getAbout(),
+      getExperience(),
+      getProjects(),
+      getSkills(),
+      getContributions(),
+    ]);
   return (
     <>
       <HeroSection config={config} showLivePreview={!embedded} />
@@ -33,6 +37,7 @@ export default async function Home({ searchParams }: HomeProps) {
       <ExperienceSection experience={experience} />
       <ProjectsSection projects={projects} />
       <SkillsSection skills={skills} />
+      <ContributionsSection contributions={contributions} />
       <ContactSection config={config} />
     </>
   );

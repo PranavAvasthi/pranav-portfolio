@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cashfree-react-native-expo",
+    "title": "Integrating Cashfree Payments with React Native Expo",
+    "description": "A walkthrough on integrating Cashfree's payment gateway into a React Native Expo app, from setup to a working checkout flow.",
+    "tag": "YouTube · 1.7K+ views",
+    "image": {
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789545342/video_rkvc0s.png",
+      "alt": "Thumbnail for the Cashfree Payments with React Native Expo video"
+    },
+    "link": {
+      "label": "Watch on YouTube",
+      "url": "https://youtu.be/QY-ZcG9CErk?si=4BNUJNRbSDQ6340I"
+    }
+  },
+  {
+    "id": "rtl-react-native-expo",
+    "title": "Implementing RTL (Right-to-Left) in React Native Expo",
+    "description": "A step-by-step guide to implementing RTL layouts in React Native Expo using i18next, AsyncStorage, and I18nManager - published on GeekyAnts' engineering blog.",
+    "tag": "Blog",
+    "image": {
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789545385/blog_rh9s7j.png",
+      "alt": "Banner for the React Native Expo right-to-left implementation guide"
+    },
+    "link": {
+      "label": "Read the article",
+      "url": "https://geekyants.com/en-in/blog/implementing-rtl-right-to-left-in-react-native-expo---a-step-by-step-guide"
+    }
+  },
+  {
+    "id": "reanimated-playground",
+    "title": "React Native Reanimated Playground",
+    "description": "An interactive learning app covering React Native Reanimated - animations, gestures, and real patterns through runnable, documented examples across 11 categories.",
+    "tag": "Community",
+    "image": {
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789545393/community_pkyprl.png",
+      "alt": "GitHub preview for the React Native Reanimated Playground repository"
+    },
+    "link": {
+      "label": "View on GitHub",
+      "url": "https://github.com/PranavAvasthi/react-native-reanimated-playground"
+    }
+  }
+]

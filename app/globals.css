@@ -294,7 +294,7 @@ summary:focus-visible {
   padding: 12px 10px;
   text-decoration: none;
 }
-@media (max-width: 699px) {
+@media (max-width: 1000px) {
   .mobile-nav-menu {
     display: block;
   }
