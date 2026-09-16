@@ -55,9 +55,9 @@ export function CelestialScene({ children }: CelestialSceneProps) {
       <div className="celestial-backdrop" aria-hidden="true">
         <SkyGradient />
         <div className="reading-scrim" />
+        <Starfield />
         <CelestialBody body="sun" />
         <CelestialBody body="moon" />
-        <Starfield />
         <HorizonSilhouette />
       </div>
       <CelestialLoader />

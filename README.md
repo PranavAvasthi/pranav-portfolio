@@ -35,7 +35,7 @@ The section-aware scroll store caches section positions on resize and publishes 
 | 0.18     | Clear midday     | `#78BCE5` | `#D8EAF0`   |
 | 0.37     | Bronze afternoon | `#8D796F` | `#B19577`   |
 | 0.54     | Velvet dusk      | `#261637` | `#462A40`   |
-| 0.72     | Blue hour        | `#26375F` | `#66628A`   |
+| 0.72     | Blue hour        | `#1E2D50` | `#394562`   |
 | 1        | Deep indigo      | `#111D3D` | `#263557`   |
 
 `lib/animations/sky-palette.ts` linearly interpolates RGB channels between stops. Foreground and secondary text are selected against the full composite sky for at least 4.5:1 contrast; the dramatic dusk stops need no flattening layer.

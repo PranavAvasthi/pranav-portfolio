@@ -39,9 +39,9 @@ export const SKY_STOPS = [
   {
     progress: 0.72,
     name: "Blue hour",
-    top: "#26375F",
-    bottom: "#66628A",
-    horizon: "#414C70",
+    top: "#1E2D50",
+    bottom: "#394562",
+    horizon: "#2D3A56",
   },
   {
     progress: 1,

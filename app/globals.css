@@ -117,10 +117,28 @@ summary:focus-visible {
 .celestial-sun {
   width: clamp(76px, 8vw, 120px);
   aspect-ratio: 1;
-  background: #fff1c6;
+  background: radial-gradient(
+    circle at 42% 38%,
+    var(--sun-core, #fff8de) 0%,
+    var(--sun-core, #fff8de) 48%,
+    var(--sun-rim, #f9dea1) 100%
+  );
   transform: translate3d(var(--sun-x, 58.8vw), var(--sun-y, 84.16svh), 0)
     translate(-50%, -50%);
   opacity: var(--sun-visible, 1);
+}
+.celestial-sun::before {
+  content: "";
+  position: absolute;
+  inset: -65%;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle,
+    transparent 29%,
+    color-mix(in srgb, var(--sun-rim, #f9dea1) 18%, transparent) 32%,
+    color-mix(in srgb, var(--sun-rim, #f9dea1) 6%, transparent) 48%,
+    transparent 70%
+  );
 }
 .celestial-moon {
   width: clamp(40px, 4.3vw, 64px);
