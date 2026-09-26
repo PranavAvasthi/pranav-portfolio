@@ -28,18 +28,24 @@ export async function HeroSection({
           showLivePreview ? "hero-copy hero-copy-with-preview" : "hero-copy"
         }
       >
-        <p className="mb-7.5 flex items-center gap-4.5 text-[15px] leading-[normal] max-[699px]:gap-3 max-[699px]:text-[13px]">
-          <span className="shrink-0">Hello, I’m</span>
-          <Signature name={config.name} signature={signature} />
-        </p>
-        <p className="mb-5 text-sm font-semibold text-(--muted)">
-          {config.role}
-        </p>
-        <h1 id="hero-title" className="hero-title">
+        <h1
+          id="hero-title"
+          className="hero-identity"
+          aria-label={`${config.name} — ${config.jobTitle}`}
+        >
+          <span className="mb-7.5 flex items-center gap-4.5 text-[15px] leading-[normal] max-[699px]:gap-3 max-[699px]:text-[13px]">
+            <span className="shrink-0">Hello, I’m</span>
+            <Signature name={config.name} signature={signature} />
+          </span>
+          <span className="mb-5 block text-sm font-semibold text-(--muted)">
+            {config.role}
+          </span>
+        </h1>
+        <p className="hero-title">
           Web & mobile
           <br />
           Carefully built<span className="title-period">.</span>
-        </h1>
+        </p>
         <p className="hero-description">{config.introduction}</p>
         <div className="flex flex-wrap items-center gap-6.5 text-sm leading-5.25 max-[699px]:gap-5 max-[699px]:text-xs max-[699px]:leading-4.5">
           <SectionLink className="primary-link" href="#projects">

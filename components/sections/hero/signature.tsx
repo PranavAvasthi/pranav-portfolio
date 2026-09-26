@@ -193,6 +193,7 @@ export function Signature({ name, signature }: SignatureProps) {
         data-draw-state="pending"
         focusable="false"
       >
+        <title>{name}</title>
         <g className="signature-fill" aria-hidden="true">
           {signature.paths.map((path, index) => (
             <path key={index} d={path.d} />

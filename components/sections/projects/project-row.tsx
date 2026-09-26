@@ -30,7 +30,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
                 ? { width: 152, height: 152, sizes: "152px" }
                 : {
                     fill: true,
-                    sizes: "(max-width: 699px) 100vw, 260px",
+                    sizes: "(max-width: 303px) calc(100vw - 44px), 260px",
                   })}
               className={
                 project.image.kind === "logo"

@@ -51,6 +51,7 @@ lib/
   utils/                  # pure helper functions
   animations/             # shared motion variants/configs
   validations/            # zod schemas (contact form, etc.)
+  seo/                    # canonical URL, metadata, and structured-data helpers
 hooks/
   use-scroll-progress.ts
   use-media-query.ts
@@ -180,6 +181,8 @@ Identity, role, introduction, email, and social destinations have one source in 
 Contributions live in `data/contributions.json`, reach the Server Component through `getContributions()`, and render as an equal three-card editorial grid between Skills and Contact. Each card reuses the project image ratio and vermilion chip treatment, then offers one explicit external action; it does not display repository vanity metrics.
 
 Contact keeps its Server Component section and isolates the form in `contact-form.tsx`. The hook owns validation/submission state, duplicate-submit protection, and cancellation; Zod schemas live in `lib/validations/contact.ts`. `lib/api/submit-contact.ts` is the only Web3Forms endpoint/fetch owner and handles response validation, rate limits, and a 15-second timeout without automatic retries. `env.ts` validates `NEXT_PUBLIC_WEB3FORMS_KEY`; an absent/invalid key disables sending without breaking the page. The provider expects this public key in browser submissions, so no server proxy is added. Tests mock the network. The form uses thin rules, visible labels, responsive columns, and the existing vermilion button style; email and social links remain available beside it.
+
+SEO identity has one source in `data/site-config.json`; `lib/seo/` derives canonical URLs, route metadata, and Person/WebSite JSON-LD from it. The App Router owns `robots.ts`, `sitemap.ts`, and the noindex 404 boundary. Embedded phone previews canonicalize to the homepage and are noindex so decorative recursion-safe iframes do not become duplicate search pages.
 
 `components/common/phone-frame.tsx` owns the device bezel for the hero's live preview. Project logos and screenshots render as standalone imagery without a device frame. The hero preview uses a non-interactive iframe of `/?embed=true`, and the home page suppresses it when that guard is present, preventing recursive phone frames. The hero phone is mounted after hydration only at viewport widths of at least 900px, and its small idle movement stops under reduced motion. This deliberate product proof balances the page without expanding the celestial scene.
 

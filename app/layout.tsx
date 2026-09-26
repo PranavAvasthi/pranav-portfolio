@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Great_Vibes } from "next/font/google";
 import { getSiteConfig } from "@/lib/data/get-site-config";
+import { SITE_URL, getCanonicalUrl } from "@/lib/seo/site-url";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -19,13 +20,22 @@ const greatVibes = Great_Vibes({
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getSiteConfig();
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: `${config.name} - ${config.role}`,
-      template: `%s - ${config.name}`,
+      default: `${config.name} | ${config.jobTitle}`,
+      template: `%s | ${config.name}`,
     },
-    description: `${config.name} is a ${config.role}. ${config.introduction}`,
+    description: config.seo.description,
+    applicationName: config.name,
+    authors: [{ name: config.name, url: getCanonicalUrl() }],
+    creator: config.name,
+    publisher: config.name,
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: "#111D3D",
+};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

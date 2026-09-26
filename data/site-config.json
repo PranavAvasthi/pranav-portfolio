@@ -1,8 +1,27 @@
 {
   "name": "Pranav Avasthi",
+  "jobTitle": "Software Engineer",
   "role": "Software Engineer · Next.js & React Native",
   "introduction": "I turn ideas into thoughtful digital experiences. A little engineering, a little curiosity, and a lot of care for how it all feels.",
   "email": "pranavavasthi44@gmail.com",
+  "seo": {
+    "description": "Pranav Avasthi is a Software Engineer building mobile apps with React Native and web experiences with Next.js and TypeScript. Explore his work and technical writing.",
+    "knowsAbout": [
+      "React Native",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Mobile Application Development",
+      "Web Application Development"
+    ],
+    "image": {
+      "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789481350/portfolio_fkwxwn.png",
+      "width": 2880,
+      "height": 1614,
+      "alt": "Pranav Avasthi's software engineering portfolio, showing the dawn sky and live mobile preview"
+    }
+  },
   "socials": [
     {
       "label": "GitHub",

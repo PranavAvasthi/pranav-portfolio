@@ -16,7 +16,8 @@ export function SiteHeader({ name }: SiteHeaderProps) {
           alt=""
           width={36}
           height={36}
-          priority
+          sizes="(max-width: 699px) 28px, 36px"
+          preload
         />
         <SectionLink
           className="header-mark no-underline"

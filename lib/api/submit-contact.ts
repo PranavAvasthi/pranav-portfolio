@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { ContactMessage, ContactSubmissionResult } from "@/types/contact";
+import { SITE_URL } from "@/lib/seo/site-url";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const responseSchema = z.object({ success: z.boolean() });
@@ -39,7 +40,7 @@ export async function submitContact(
         subject: `New portfolio enquiry from ${senderName}`,
         from_name: `${senderName} via Pranav's portfolio`,
         replyto: message.email,
-        source: "pranavavasthi.vercel.app",
+        source: new URL(SITE_URL).hostname,
         botcheck: false,
       }),
     });

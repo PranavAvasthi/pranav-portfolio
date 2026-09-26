@@ -1,4 +1,8 @@
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/hero/hero-section";
+import { SiteStructuredData } from "@/components/common/site-structured-data";
+import { getPageMetadata } from "@/lib/seo/metadata";
+import { isEmbeddedPreview } from "@/lib/utils/is-embedded-preview";
 import { AboutSection } from "@/components/sections/about/about-section";
 import { ExperienceSection } from "@/components/sections/experience/experience-section";
 import { ProjectsSection } from "@/components/sections/projects/projects-section";
@@ -16,11 +20,19 @@ interface HomeProps {
   searchParams: Promise<{ embed?: string | string[] }>;
 }
 
+export async function generateMetadata({
+  searchParams,
+}: HomeProps): Promise<Metadata> {
+  const [config, query] = await Promise.all([getSiteConfig(), searchParams]);
+  return getPageMetadata(config, {
+    path: "/",
+    index: !isEmbeddedPreview(query.embed),
+  });
+}
+
 export default async function Home({ searchParams }: HomeProps) {
   const embed = (await searchParams).embed;
-  const embedded = Array.isArray(embed)
-    ? embed.includes("true")
-    : embed === "true";
+  const embedded = isEmbeddedPreview(embed);
   const [config, about, experience, projects, skills, contributions] =
     await Promise.all([
       getSiteConfig(),
@@ -32,6 +44,7 @@ export default async function Home({ searchParams }: HomeProps) {
     ]);
   return (
     <>
+      {!embedded && <SiteStructuredData config={config} />}
       <HeroSection config={config} showLivePreview={!embedded} />
       <AboutSection about={about} />
       <ExperienceSection experience={experience} />

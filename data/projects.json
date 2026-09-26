@@ -31,7 +31,7 @@
     "title": "A day on the web",
     "category": "You're looking at it right now",
     "platform": ["web"],
-    "url": "https://pranavavasthi.vercel.app/",
+    "url": "/",
     "image": {
       "kind": "screenshot",
       "src": "https://res.cloudinary.com/dlnbxkljg/image/upload/v1789481350/portfolio_fkwxwn.png",

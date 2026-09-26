@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
 import { submitContact } from "@/lib/api/submit-contact";
+import { SITE_URL } from "@/lib/seo/site-url";
 
 const message = {
   name: "Test Visitor",
@@ -42,7 +43,7 @@ describe("Web3Forms submission (mocked network only)", () => {
         subject: "New portfolio enquiry from Test Visitor",
         from_name: "Test Visitor via Pranav's portfolio",
         replyto: "visitor@example.com",
-        source: "pranavavasthi.vercel.app",
+        source: new URL(SITE_URL).hostname,
         botcheck: false,
       });
     }
