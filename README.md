@@ -14,6 +14,14 @@ bun run build
 
 Open `http://localhost:3000`. Bricolage Grotesque and Great Vibes use `next/font/google`, so the first build needs access to Google Fonts. In environments that prohibit Turbopack’s internal process/port binding, use `bun run dev --webpack` and `bun run build --webpack`.
 
+## Contact form
+
+Set `NEXT_PUBLIC_WEB3FORMS_KEY` in `.env.local` (or your existing `.env`) and in the deployment environment to the access key for your verified Web3Forms inbox. `.env.example` lists the variable without a credential. Restart the dev server after changing it; production requires a new build because Next.js embeds public environment values at build time.
+
+`env.ts` validates the key. A missing or invalid key disables submission while leaving the direct email link available. This is Web3Forms' public browser access key, not a server secret. The Contact section stays a Server Component; its form delegates state to `hooks/use-contact-form.ts`, validation to `lib/validations/contact.ts`, and all HTTP requests to `lib/api/submit-contact.ts`. No Web3Forms SDK or API proxy is needed. Configure spam/domain protections in Web3Forms as appropriate; the form also includes its supported honeypot.
+
+Submission tests mock the network and never send email. Confirm delivery manually through the configured Web3Forms inbox when deploying.
+
 ## Content
 
 Edit the JSON fixtures; components read them through async accessors in `lib/data/`.

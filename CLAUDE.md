@@ -46,6 +46,7 @@ data/
   contributions.json
   site-config.json
 lib/
+  api/                    # browser-side external submissions, separate from content accessors
   data/                   # accessor layer - see §2
   utils/                  # pure helper functions
   animations/             # shared motion variants/configs
@@ -53,14 +54,17 @@ lib/
 hooks/
   use-scroll-progress.ts
   use-media-query.ts
+  use-contact-form.ts
 types/
   about.ts
   project.ts
   experience.ts
   skill.ts
   contribution.ts
+  contact.ts
   site-config.ts
   index.ts
+env.ts                    # validated public environment configuration
 public/
   images/
   fonts/                  # only if self-hosting non-next/font files
@@ -174,6 +178,8 @@ Sun and moon share `x = 56 + 38t`, `y = 106 - 94sin(πt)` with clamped local arc
 Identity, role, introduction, email, and social destinations have one source in `data/site-config.json`; the hero, About section, contact, footer, and metadata receive them through `getSiteConfig()`. Experience uses one company record with nested role tenures so promotions read as progression within the same employer. Role dates are stored as calendar months; `formatExperiencePeriod()` derives inclusive tenure, while the current role refreshes against the visitor's date after hydration. Project case studies live in the typed project fixture and render on statically generated `/projects/[slug]` routes; the optional `sky-contrast` experiment is a small client boundary using the same palette functions as the scene. Its results describe sampled palette contrast, not whole-page accessibility compliance. Skills consolidate related tools into curated constellation points; project tech stacks show their supporting technologies. The shorter hero headline keeps role, introduction, and work actions prominent.
 
 Contributions live in `data/contributions.json`, reach the Server Component through `getContributions()`, and render as an equal three-card editorial grid between Skills and Contact. Each card reuses the project image ratio and vermilion chip treatment, then offers one explicit external action; it does not display repository vanity metrics.
+
+Contact keeps its Server Component section and isolates the form in `contact-form.tsx`. The hook owns validation/submission state, duplicate-submit protection, and cancellation; Zod schemas live in `lib/validations/contact.ts`. `lib/api/submit-contact.ts` is the only Web3Forms endpoint/fetch owner and handles response validation, rate limits, and a 15-second timeout without automatic retries. `env.ts` validates `NEXT_PUBLIC_WEB3FORMS_KEY`; an absent/invalid key disables sending without breaking the page. The provider expects this public key in browser submissions, so no server proxy is added. Tests mock the network. The form uses thin rules, visible labels, responsive columns, and the existing vermilion button style; email and social links remain available beside it.
 
 `components/common/phone-frame.tsx` owns the device bezel for the hero's live preview. Project logos and screenshots render as standalone imagery without a device frame. The hero preview uses a non-interactive iframe of `/?embed=true`, and the home page suppresses it when that guard is present, preventing recursive phone frames. The hero phone is mounted after hydration only at viewport widths of at least 900px, and its small idle movement stops under reduced motion. This deliberate product proof balances the page without expanding the celestial scene.
 
