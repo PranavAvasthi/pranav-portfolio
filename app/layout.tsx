@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Great_Vibes } from "next/font/google";
+import { env } from "@/env";
 import { getSiteConfig } from "@/lib/data/get-site-config";
 import { SITE_URL, getCanonicalUrl } from "@/lib/seo/site-url";
 import "./globals.css";
@@ -30,6 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: config.name, url: getCanonicalUrl() }],
     creator: config.name,
     publisher: config.name,
+    verification: env.GOOGLE_SITE_VERIFICATION
+      ? { google: env.GOOGLE_SITE_VERIFICATION }
+      : undefined,
   };
 }
 

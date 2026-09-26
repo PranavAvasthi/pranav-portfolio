@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { env } from "@/env";
 import { getSiteConfig } from "@/lib/data/get-site-config";
 import { getProjects } from "@/lib/data/get-projects";
 import { SITE_URL, getCanonicalUrl } from "@/lib/seo/site-url";
@@ -40,6 +41,7 @@ describe("public SEO configuration", () => {
     );
     assert.equal(study.openGraph?.url, study.alternates?.canonical);
     assert.equal(study.twitter?.description, "The actual case study.");
+    assert.equal(home.verification?.google, env.GOOGLE_SITE_VERIFICATION);
     assert.deepEqual(
       study.openGraph?.title,
       study.title &&
