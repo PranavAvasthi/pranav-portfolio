@@ -1,4 +1,4 @@
-export const SITE_URL = "https://pranavavasthi.vercel.app";
+export const SITE_URL = "https://pranavavasthi.in";
 
 export function getCanonicalUrl(path = "/"): string {
   const url = new URL(path, SITE_URL);

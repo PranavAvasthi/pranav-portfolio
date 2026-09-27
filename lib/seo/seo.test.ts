@@ -15,6 +15,7 @@ import robots from "@/app/robots";
 
 describe("public SEO configuration", () => {
   it("canonicalizes query strings, fragments and trailing slashes without accepting other origins", () => {
+    assert.equal(SITE_URL, "https://pranavavasthi.in");
     assert.equal(getCanonicalUrl("/?embed=true#home"), `${SITE_URL}/`);
     assert.equal(
       getCanonicalUrl("/projects/a-day-on-the-web/?ref=share"),
@@ -92,7 +93,11 @@ describe("public SEO configuration", () => {
     const config = await getSiteConfig();
     const graph = getSiteStructuredData(config);
     const person = graph["@graph"][0];
+    const website = graph["@graph"][1];
     assert.equal(person.jobTitle, config.jobTitle);
+    assert.equal(person.url, `${SITE_URL}/`);
+    assert.equal(website.name, "Pranav Avasthi");
+    assert.equal(website.url, `${SITE_URL}/`);
     assert.deepEqual(
       person.sameAs,
       config.socials.map((social) => social.url),
