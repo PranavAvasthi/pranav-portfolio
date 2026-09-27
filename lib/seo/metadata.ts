@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { env } from "@/env";
 import type { SiteConfig } from "@/types/site-config";
 import { getCanonicalUrl } from "@/lib/seo/site-url";
 
@@ -60,8 +59,5 @@ export function getPageMetadata(
       creator: twitterHandle,
       images: [{ url: new URL(image.src, canonical).href, alt: image.alt }],
     },
-    verification: env.GOOGLE_SITE_VERIFICATION
-      ? { google: env.GOOGLE_SITE_VERIFICATION }
-      : undefined,
   };
 }
